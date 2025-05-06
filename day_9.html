@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day 9 - အချက်အလက် အမျိုးအစား အခြေခံ</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 20px;
+      background-color: #fefefe;
+      color: #333;
+    }
+    h1, h2 {
+      color: #2c3e50;
+    }
+    .box {
+      background-color: #ffffff;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      transition: box-shadow 0.3s ease;
+    }
+    .box:hover {
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+    .example {
+      background-color: #f1f1f1;
+      padding: 10px;
+      border-left: 4px solid #3498db;
+      margin: 10px 0;
+      border-radius: 5px;
+    }
+    .highlight {
+      background-color: #fff8dc;
+      padding: 5px;
+      border-radius: 4px;
+    }
+    .tag {
+      color: #888;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h1>New World Technology Sharing</h1>
+    <h2>Day 9: အချက်အလက် အမျိုးအစား အခြေခံ (Basic Data Types)</h2>
+    <p>မင်္ဂလာပါ! 👋 မနေ့က Variable တွေအကြောင်း လေ့လာခဲ့ကြတယ်နော်။ Variable တွေဟာ အချက်အလက်တွေကို သိမ်းဆည်းတဲ့ "စက္ကူပုံးလေးတွေ" လိုပဲဆိုတာ မှတ်မိကြမယ်ထင်ပါတယ်။ ဒီနေ့မှာတော့ အဲ့ဒီ "စက္ကူပုံး" တွေထဲမှာ ထည့်နိုင်တဲ့ <strong>အချက်အလက် အမျိုးအစား</strong> တွေအကြောင်း ပြောပြမယ်။ မတူညီတဲ့ အရာတွေအတွက် မတူညီတဲ့ ပုံးတွေ သုံးသလိုမျိုးပေါ့ 😉။</p>
+  </div>
+
+  <div class="box">
+    <p>Programming မှာလည်း သိမ်းဆည်းမယ့် အချက်အလက်ရဲ့ အမျိုးအစားပေါ်မူတည်ပြီး Variable တွေကို အမျိုးအစား ခွဲခြားသတ်မှတ်ထားပါတယ်။ အခု အခြေခံ အသုံးအများဆုံး အမျိုးအစား (၃) ခုကို လေ့လာကြည့်ရအောင် 👇</p>
+  </div>
+
+  <div class="box">
+    <h3>၁။ နံပါတ်များ (Numbers)</h3>
+    <p>ဒါကတော့ ကျွန်တော်တို့ အမြဲသုံးနေတဲ့ ဂဏန်းတွေပါပဲ! Programming မှာ နံပါတ်တွေကို အဓိကအားဖြင့် နှစ်မျိုးခွဲခြားနိုင်တယ်:</p>
+    <ul>
+      <li><strong>Integer (ပြည့်ကိန်း):</strong> ဒဿမ မပါတဲ့ နံပါတ်တွေ (ဥပမာ: -၅, ၀, ၁၀, ၁၀၀၀)</li>
+      <li><strong>Float (ဒဿမကိန်း):</strong> ဒဿမ ပါတဲ့ နံပါတ်တွေ (ဥပမာ: -၃.၁၄, ၀.၅, ၉.၈၆)</li>
+    </ul>
+    <div class="example">
+      <p><span class="highlight">အရေအတွက် = ၅</span> (ပြည့်ကိန်း Variable)</p>
+      <p><span class="highlight">အပူချိန် = ၂၆.၅</span> (ဒဿမကိန်း Variable)</p>
+    </div>
+  </div>
+
+  <div class="box">
+    <h3>၂။ စာသားများ (Text / Strings)</h3>
+    <p>စာလုံးတွေ၊ စကားလုံးတွေ၊ စာကြောင်းတွေကို သိမ်းဖို့ သုံးတဲ့ အမျိုးအစားပါ။ Programming မှာ စာသားတွေကို "" (quote) နှစ်ခုကြားမှာ ရိုက်ပါတယ်။</p>
+    <div class="example">
+      <p><span class="highlight">နာမည် = "ခင်ခင်"</span> (စာသား Variable)</p>
+      <p><span class="highlight">နှုတ်ခွန်းဆက် = "မင်္ဂလာပါ!"</span> (စာသား Variable)</p>
+    </div>
+  </div>
+
+  <div class="box">
+    <h3>၃။ မှန်/မှား တန်ဖိုးများ (Booleans)</h3>
+    <p>တန်ဖိုး နှစ်ခုပဲ ရှိပါတယ်: <strong>True</strong> နဲ့ <strong>False</strong>။ "ဟုတ်"/"မဟုတ်" အဖြစ် နားလည်လို့ရပါတယ်။</p>
+    <div class="example">
+      <p><span class="highlight">မိုးရွာနေလား = ဟုတ်</span> (Boolean Variable)</p>
+      <p><span class="highlight">အသက် ၁၈ နှစ် ပြည့်ပြီလား = မဟုတ်</span> (Boolean Variable)</p>
+    </div>
+  </div>
+
+  <div class="box">
+    <p>ဒီနေ့မှာတော့ အခြေခံ အချက်အလက် အမျိုးအစား (၃) ခုကိုပဲ သိထားဖို့ လုံလောက်ပါပြီ။ နောက်ပိုင်းမှာတော့ ဒီအမျိုးအစားတွေနဲ့ ပတ်သက်တဲ့ လုပ်ဆောင်ချက်တွေကို ဆက်လက် လေ့လာသွားမှာဖြစ်ပါတယ်။ 😊</p>
+    <p class="tag">#programming #datatypes #numbers #text #boolean #အခြေခံ #နည်းပညာ #မြန်မာ</p>
+  </div>
+</body>
+</html>
