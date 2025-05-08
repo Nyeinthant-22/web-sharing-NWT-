@@ -1,72 +1,81 @@
 body {
-    font-family: sans-serif;
-    background-color: #f2f2f2;
-    color: #333;
     margin: 0;
-    padding: 20px;
-}
-
-.container {
-    max-width: 1100px;
-    margin: auto;
-    background-color: #fff;
-    padding: 30px;
-    border: 15px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-
-h1 {
-    text-align: center;
-    font-size: 28px;
-    margin-bottom: 30px;
-}
-
-.grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-.content, .image {
-    flex: 1;
-    min-width: 300px;
-}
-
-.section {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.8);
-    margin-bottom: 20px;
-    transition: transform 0.3s ease;
-}
-
-.section:hover {
-    transform: scale(1.01);
-}
-
-.section h2 {
-    font-size: 20px;
-    margin-bottom: 10px;
+    font-family: Arial, sans-serif;
+    background-color: #f7f9fc;
     color: #333;
 }
 
-img {
-    width: 100%;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    margin: 60px 0;
+nav {
+    background-color: #7ab1ff;
+    color: white;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.hashtags {
-    text-align: center;
-    font-size: 14px;
-    color: #777;
-    margin-top: 30px;
+nav h1 {
+    font-size: 20px;
+    margin: 0;
 }
 
-.NWT {
-    font-size: 35px;
+nav span {
     font-weight: bold;
-    color: rgb(42, 85, 255);
+    font-size: 18px;
+    color: #ffffff;
 }
+
+/* main content */
+.container {
+    display: flex;
+    padding: 30px;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 30px 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 12px;
+}
+
+.container .img_space img {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 10px;
+    object-fit: cover;
+    margin: 50px auto;
+  }
+
+  .img_space {
+    flex: 0 0 40%;
+  }
+
+  .content {
+    flex: 1;
+  }
+
+  .content h2 {
+    color: #003366;
+  }
+
+  .content code {
+    background-color: #f0f0f0;
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+
+  .content ul {
+    padding-left: 20px;
+  }
+
+  /* Footer */
+  footer {
+    background-color: #003366;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+  }
+  footer span {
+    color: #00e6e6;
+  }
