@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Day_12 အခြေအနေပေါ် မူတည်တဲ့ လုပ်ဆောင်ချက် - If (Conditional Statements -
+      If)
+    </title>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      nav {
+        background-color: rgb(189, 124, 250);
+        padding: 20px;
+        color: white;
+        font-weight: bold;
+        display: flex;
+        justify-content: space-around;
+      }
+
+      nav span {
+        font-size: 20px;
+        transition: color 0.3s;
+      }
+
+      nav span:hover {
+        color: aquamarine;
+      }
+
+      .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 30px;
+        gap: 30px;
+        max-width: 1100px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin: 40px auto;
+        border-radius: 15px;
+        background: white;
+      }
+
+      .content {
+        flex: 1 1 500px;
+      }
+
+      .content p {
+        line-height: 1.7;
+      }
+
+      .box {
+        padding: 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 15px;
+        transition: 0.5s;
+        margin: 21px auto;
+      }
+
+      .box:hover {
+        transform: scale(1.02);
+      }
+
+      .img {
+        flex: 1 1 300px;
+      }
+
+      .img img {
+        max-width: 100%;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        margin: 20px auto;
+        transition: 0.5s;
+      }
+
+      .img img:hover {
+        transform: scale(1.02);
+      }
+
+      footer {
+        background-color: #003366;
+        color: white;
+        font-weight: bold;
+        padding: 15px;
+        text-align: center;
+        margin-top: 40px;
+      }
+
+      code {
+        display: block;
+        background-color: #f4f4f4;
+        color: #2c3e50;
+        padding: 12px 15px;
+        border-left: 5px solid #8e44ad;
+        font-family: "Courier New", Courier, monospace;
+        border-radius: 8px;
+        margin: 20px 0;
+      }
+
+      .NWT {
+        font-size: 20px;
+      }
+
+      @media (max-width: 768px) {
+        .container {
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <span>NWT</span>
+      <span>Beginner Programming Basic</span>
+    </nav>
+
+    <div class="container">
+      <div class="content">
+        <div class="box">
+          <h1>Day 12: အခြေအနေပေါ် မူတည်တဲ့ လုပ်ဆောင်ချက် - If</h1>
+        </div>
+
+        <div class="box">
+          <p>
+            မင်္ဂလာပါ! 👋 လွန်ခဲ့တဲ့ နှစ်ရက်က Comparison အကြောင်း လေ့လာပြီး
+            ဖြစ်ပါတယ်။ ဒီနေ့တော့ အဲ့ဒီအခြေအနေပေါ် မူတည်ပြီး လုပ်ဆောင်ဖို့ **If**
+            ကို သုံးမယ်နော်။
+          </p>
+        </div>
+
+        <div class="box">
+          <h3>📌 "If" ဆိုတာ ဘာလဲ?</h3>
+          <p>
+            “If” က Programming မှာ "အကယ်၍" ဆိုတဲ့ အဓိပ္ပါယ်နဲ့ တူပါတယ်။
+            အခြေအနေတစ်ခု မှန်ရင် တစ်ခုခုလုပ်ဆောင်တယ်။ မမှန်ရင် ကျော်သွားတယ်။
+          </p>
+        </div>
+
+        <div class="box">
+          <h3>🧾 ရိုးရှင်းတဲ့ ပုံစံ:</h3>
+          <code>
+            if (status == true) { "Continue Working This" } else { "Stop It" }
+          </code>
+        </div>
+
+        <div class="box">
+          <h3>🌦️ နေ့စဉ်ဘဝနဲ့ ဥပမာ:</h3>
+          <ul>
+            <li><span class="emoji">🌧️</span> အကယ်၍ မိုးရွာရင် — ထီးယူပါ။</li>
+            <li>
+              <span class="emoji">😋</span> အကယ်၍ ဗိုက်ဆာရင် — ထမင်းစားပါ။
+            </li>
+            <li>
+              <span class="emoji">🌡️</span> အကယ်၍ အပူချိန် ၃၀ ဒီဂရီ ကျော် —
+              လေအေးပေးစက်ဖွင့်ပါ။
+            </li>
+          </ul>
+        </div>
+
+        <div class="box">
+          <h3>💻 Programming မှာ "If" ဘယ်လို အလုပ်လုပ်လဲ?</h3>
+          <p>
+            Programming မှာလည်း အခြေအနေ တစ်ခုကို စစ်ဆေးပြီး ဟုတ်ရင် code ကို
+            လုပ်ဆောင်တယ်။ မဟုတ်ရင် ကျော်သွားတယ်။
+          </p>
+        </div>
+
+        <div class="box">
+          <h3>🔜 နောက်သင်ခန်းစာ</h3>
+          <p>
+            နောက်တစ်နေ့မှာတော့ If statement ကို အသုံးပြုပြီး လုပ်ဆောင်ချက်တွေကို
+            လုပ်နိုင်တဲ့ အကြောင်း ရှင်းပြသွားပါမယ်။
+          </p>
+        </div>
+      </div>
+
+      <div class="img">
+        <img src="if_statement.png" alt="If statement flowchart" />
+        <img src="if_statement_001.jpg" alt="If statement flowchart" />
+        <img src="if_statement_002.jpg" alt="If statement flowchart" />
+        <img src="if_statement_003.png" alt="If statement flowchart" />
+      </div>
+    </div>
+
+    <footer>Built By <span class="NWT">NWT</span></footer>
+  </body>
+</html>
