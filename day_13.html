@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Day - 13 အခြေအနေပေါ် မူတည်တဲ့ လုပ်ဆောင်ချက် - If (Conditional Statements -
+      If)
+    </title>
+    <style>
+      body {
+        font-family: "Noto Sans Myanmar", sans-serif;
+        margin: 0;
+        padding: 0;
+        color: #333;
+        background-color: #f8f9fa;
+      }
+
+      nav {
+        background-color: #181674;
+        color: white;
+        font-weight: bold;
+        padding: 15px;
+        font-size: 20px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+      }
+
+      nav span {
+        transition: 0.5s;
+      }
+
+      nav span:hover {
+        color: #ffdc30;
+      }
+
+      .container {
+       display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 30px;
+        gap: 30px;
+        max-width: 1100px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin: 40px auto;
+        border-radius: 15px;
+        background: white;
+      }
+
+      .card {
+        display: flex;
+        gap: 20px;
+        background: #fff;
+        padding: 20px;
+        border-radius: 16px;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.8);
+        margin: 10px;
+        align-items: center;
+        transition: transform 0.3s;
+        flex-wrap: wrap;
+        flex-direction: row;
+        width: 100%;
+      }
+
+      .card:hover {
+        transform: scale(1.01);
+      }
+
+      .text {
+        flex: 1;
+      }
+
+      .image {
+        flex: 1;
+        width: 100%;
+        max-width: 350px;
+      }
+
+      .image img {
+        width: 100%;
+        height: auto;
+        border-radius: 12px;
+        object-fit: cover;
+      }
+
+      code {
+        display: block;
+        background: #f1f1f1;
+        padding: 10px;
+        margin-top: 10px;
+        border-radius: 6px;
+        white-space: pre-wrap;
+      }
+
+      @media (max-width: 768px) {
+        .container {
+            padding: 10px;
+            margin: 10px;
+        }
+        .card {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .image {
+            max-width: 100%;
+            width: 100%;
+        }
+
+        .text, .image {
+            flex: unset;
+        }
+
+      }
+
+      footer {
+            background-color: #181674;
+            color: white;
+            font-weight: bold;
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
+  </head>
+  <body>
+    <!-- nav bar start -->
+    <nav>
+      <span> NWT </span>
+      <span> Beginner Programming Concept </span>
+    </nav>
+    <!-- nav bar end -->
+
+    <!-- container start -->
+    <div class="container">
+
+    <div class="card">
+      <div class="text">
+        <h3>ဥပမာ ၁: မိုးရွာခြင်း 🌧️</h3>
+        <p>အကယ်၍ မိုးရွာနေရင် ထီးယူသွားပါ။ မဟုတ်ရင်တော့ မယူသွားနဲ့။</p>
+        <code>if (raining == true) {<br>  "Take Umbrella";<br>}</code>
+      </div>
+      <div class="image">
+        <img src="./raining.webp" alt="Rain Example" />
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="text">
+        <h3>ဥပမာ ၂: ဗိုက်ဆာခြင်း 😋</h3>
+        <p>အကယ်၍ ဗိုက်ဆာရင် ထမင်းစားပါ။</p>
+        <code>if (hungry == true){<br>  "Eat Meal";<br>}</code>
+      </div>
+      <div class="image">
+        <img src="./hungry.jpg" alt="Hungry Example" />
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="text">
+        <h3>ဥပမာ ၃: အသက်စစ်ဆေးခြင်း 🎉</h3>
+        <p>အကယ်၍ အသက် ၁၈ နှစ် ပြည့်ပြီးရင် မဲပေးနိုင်ပါတယ်။</p>
+        <code>if(age >= 18) {<br>  "Can Vote";<br>}</code>
+      </div>
+      <div class="image">
+        <img src="./if_statement_004.webp" alt="Voting Example" />
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="text">
+        <h3>ဥပမာ ၄: အပူချိန် 🥵</h3>
+        <p>အကယ်၍ အပူချိန် ၃၀ ဒီဂရီထက် များရင် ရေကူးကန်သွားပါ။</p>
+        <code>if (temperature > 30) {<br>  "Go to Swimming Pool";<br>}</code>
+      </div>
+      <div class="image">
+        <img src="./if_statment_005.png" alt="Hot Example" />
+      </div>
+    </div>
+
+  </div>
+    <!-- container end -->
+
+    <!-- footer start -->
+    <footer>
+        <span>Built by NWT</span>
+    </footer>
+    <!-- footer end  -->
+  </body>
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 700,
+    });
+  </script>
+</html>
