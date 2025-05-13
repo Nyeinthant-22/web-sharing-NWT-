@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day-14-Let's Review What We Learned This Week</title>
+    <style>
+        body {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #000;
+            line-height: 1.6;
+            background-color: antiquewhite;
+        }
+
+        nav {
+            background-color: white;
+            color: #000;
+            font-weight: bold;
+            padding: 15px;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        nav span {
+            font-size: 20px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 20px auto;
+            padding: 20px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            background-color: white;
+            border-radius: 15px;
+        }
+
+        h1, h2 {
+            color: #222;
+        }
+
+        .section {
+            background-color: antiquewhite;
+            padding: 20px;
+            margin: 15px;
+            border-radius: 15px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.6);
+            transition: 0.5s;
+        }
+
+        .section:hover {
+            transform: scale(1.01);
+        }
+
+        .day-block {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .day-block img {
+            width: 100%;
+            border-radius: 16px;
+        }
+
+        footer {
+            background-color: white;
+            padding: 20px;
+            text-align: center;
+            color: rgb(24, 24, 130);
+            font-weight: bold;
+        }
+
+        footer span {
+            font-size: 20px;
+            color: #000;
+        }
+
+        @media(max-width: 768px){
+            .day-block {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media(max-width: 1150px){
+            .container {
+                margin: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <body>
+
+        <!-- nav start -->
+         <nav>
+            <span>NWT</span><span>Basic Programming Knowledge</span>
+         </nav>
+         <!-- nav end -->
+
+
+        <!-- container start -->
+  <div class="container">
+    <h1>Day 14: တစ်ပတ်အတွင်း လေ့လာခဲ့တာတွေကို ပြန်ကြည့်ရအောင်</h1>
+    <p>မင်္ဂလာပါ အားလုံးပဲ! 👋 ဒါနဲ့ဆို Programming အခြေခံ ဒုတိယအပတ်လည်း ပြီးဆုံးသွားပြီနော် 😊။ ဒီတစ်ပတ်မှာ သင်ယူခဲ့တဲ့ အဓိကအကြောင်းအရာတွေကို အတူပြန်ကြည့်ကြမယ်။</p>
+
+    <div class="section day-block">
+      <img src="./day_14_img_002.webp" alt="Variable">
+      <div>
+        <h2>Day 8: Variable ဆိုတာ ဘာလဲ?</h2>
+        <p>Variable ဆိုတာ အချက်အလက်တွေကို သိမ်းဆည်းဖို့ သုံးတဲ့ "နာမည်" ပါတဲ့ "စက္ကူပုံးလေးတွေ" နဲ့ တူတယ်ဆိုတာကို လေ့လာခဲ့တယ်။</p>
+      </div>
+    </div>
+
+    <div class="section day-block">
+      <img src="./day_14_img_003.jpg" alt="Data Types">
+      <div>
+        <h2>Day 9: အချက်အလက် အမျိုးအစား အခြေခံ</h2>
+        <p>နံပါတ် (ints & floats), စာသား (strings), မှန်/မှား (booleans) တို့နဲ့ မိတ်ဆက်ခဲ့တယ်။</p>
+      </div>
+    </div>
+
+    <div class="section day-block">
+      <img src="./day_14_img_001.jpg" alt="Math Operators">
+      <div>
+        <h2>Day 10: သင်္ချာ လုပ်ဆောင်ချက်တွေ</h2>
+        <p>ပေါင်းခြင်း (+), နုတ်ခြင်း (-), မြှောက်ခြင်း (*), စားခြင်း (/) တို့နဲ့ တွက်ချက်နိုင်တာကို လေ့လာခဲ့တယ်။</p>
+      </div>
+    </div>
+
+    <div class="section day-block">
+      <img src="./day_14_img_004.jpg" alt="Comparison Operators">
+      <div>
+        <h2>Day 11: နှိုင်းယှဉ်ခြင်း လုပ်ဆောင်ချက်</h2>
+        <p>==, !=, >, <, >=, <= တို့ကို သုံးပြီး တန်ဖိုးနှိုင်းယှဉ်နည်းကို သင်ယူခဲ့တယ်။</p>
+      </div>
+    </div>
+
+    <div class="section day-block">
+      <img src="./day_14_img_005.png" alt="If Statement">
+      <div>
+        <h2>Day 12: အခြေအနေအပေါ် မူတည်တဲ့ လုပ်ဆောင်ချက် - If</h2>
+        <p>အခြေအနေတစ်ခုကို စစ်ပြီး မှန်ရင်လုပ်တာမျိုးကို "If" နဲ့ ပြုလုပ်တတ်လာခဲ့တယ်။</p>
+      </div>
+    </div>
+
+    <div class="section day-block">
+      <img src="./day_14_img_006.png" alt="If Examples">
+      <div>
+        <h2>Day 13: If နဲ့ ပတ်သက်တဲ့ ရိုးရှင်းသော ဥပမာများ</h2>
+        <p>နေ့စဉ်ဘဝ ဥပမာတွေနဲ့ "If" ကို ပိုမို နားလည်လာစေခဲ့တယ်။</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <p>ဒီတစ်ပတ်မှာ သင်ယူခဲ့တာတွေက Programming ရဲ့ အခြေခံ အုတ်မြစ်တွေပါ။ နားလည်ပြီးသားဆိုရင် နောက်လေ့လာမယ့် concept တွေ ပိုမိုလွယ်ကူမှာပါ။</p>
+      <p>မေးစရာ ရှိရင် comment ထဲမှာ မေးဖို့ လွတ်လပ်ပါတယ် 🤔။</p>
+      <p>နောက်တစ်ပတ်မှာတော့ ဒီအခြေခံတွေကို ပေါင်းပြီး ပို စိတ်ဝင်စားဖို့ကောင်းတဲ့ နည်းပညာတွေကို ဖန်တီးဖို့ စတင်ပါမယ်။ ဆက်လက် လေ့လာကြပါဦး။ 👋</p>
+    </div>
+
+    <p>#NWT #programming #review #အခြေခံ #နည်းပညာ</p>
+  </div>
+  <!-- container end -->
+
+  <!-- footer start -->
+   <footer>
+        built by <span>NWT</span>
+   </footer>
+   <!-- footer end -->
+</body>
+</html>
