@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Day-15-Lists & Arrays</title>
+    <style>
+      body {
+        font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+          "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        color: #000000;
+        background-color: antiquewhite;
+      }
+
+      header,
+      nav,
+      footer {
+        background-color: #110e48;
+        color: white;
+        font-weight: bold;
+        padding: 1rem;
+        text-align: center;
+      }
+
+      nav a {
+        color: white;
+        margin: 0 1rem;
+        text-decoration: none;
+      }
+
+      .container {
+        max-width: 1100px;
+        margin: 20px auto;
+        padding: 2rem;
+        background-color: white;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.8);
+        border-radius: 15px;
+      }
+
+      .content-box {
+        background-color: antiquewhite;
+        padding: 1.5rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+        border-radius: 15px;
+        margin-bottom: 2rem;
+        border-left: 6px solid #110e48;
+        text-align: center;
+        
+      }
+
+      .content-box img {
+        max-width: 70%;
+        border-radius: 15px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.8);
+        transition: 0.5s ease;
+      }
+
+      .content-box img:hover {
+        transform: scale(1.01);
+      }
+
+      .content-box ul li {
+        list-style: none;
+      }
+
+      /* .flex-box {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        align-items: center;
+        text-align: center;
+      }
+
+      .flex-box img {
+        border-radius: 15px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.8);
+        max-width: 300px;
+        width: 100%;
+        transition: 0.3s ease;
+      }
+
+      .flex-box img:hover {
+        transform: scale(1.01);
+      } */
+
+      pre {
+        background-color: #ffffff;
+        padding: 1rem;
+        border-radius: 8px;
+        border-left: 4px solid #110e48;
+        overflow-x: auto;
+      }
+
+      code {
+        font-family: monospace;
+        font-size: 15px;
+        color: #333;
+        display: block;
+      }
+
+      @media (max-width:1180px){
+        .container {
+            margin: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>JavaScript Training Series</h1>
+    </header>
+
+    <nav>
+      <a href="https://nyeinthant-22.github.io/web-sharing-NWT-/day_12.html">Day 12</a>
+      <a href="https://nyeinthant-22.github.io/web-sharing-NWT-/day_13.html">Day 13</a>
+      <a href="https://nyeinthant-22.github.io/web-sharing-NWT-/day_14.html">Day 14</a>
+      <a href="https://nyeinthant-22.github.io/web-sharing-NWT-/day_15.html">Day 15</a>
+    </nav>
+
+    <div class="container">
+      <div class="content-box">
+        <h2>Day 15: List ဆိုတာ ဘာလဲ?</h2>
+        <img src="./day_15_01.png" alt="List Cover" />
+        <p>
+          မင်္ဂလာပါ! ဒီနေ့မှာတော့ List (Array) ဆိုတာ ဘာလဲဆိုတာ လေ့လာသွားမှာ
+          ဖြစ်ပါတယ်။
+        </p>
+      </div>
+
+      <div class="content-box">
+        <h3>List (Array) ဆိုတာ ဘာအတွက်သုံးတာလဲ?</h3>
+        <img src="./day_15_02.webp" alt="Why Use Arrays" />
+        <p>
+          Variable တစ်ခုချင်းစီနဲ့ သိမ်းတာထက် စုစည်းပြီး သိမ်းထားလို့
+          ပိုမိုလွယ်ကူပါတယ်။
+        </p>
+        <pre><code>let friend1 = "မောင်မောင်";
+let friend2 = "ခင်ခင်";
+let friend3 = "ကိုကို";
+let friend4 = "အေးအေး";</code></pre>
+      </div>
+
+      <div class="content-box">
+        <h3>နေ့စဉ်ဘဝနဲ့ ဥပမာ</h3>
+        <img src="./day_15_03.png" alt="Daily Examples" />
+        <ul>
+          <li>
+            သူငယ်ချင်းစာရင်း: ["မောင်မောင်", "ခင်ခင်", "ကိုကို", "အေးအေး"]
+          </li>
+          <li>ဝယ်စရာ: ["ဆန်", "ဆီ", "ကြက်ဥ", "ဟင်းသီးဟင်းရွက်"]</li>
+          <li>အမှတ်: [၈၅, ၉၂, ၇၈, ၉၅]</li>
+        </ul>
+      </div>
+
+      <div class="content-box">
+        <h3>JavaScript Code Example</h3>
+        <img src="./day_15_04.png" alt="JS Code Example" />
+        <pre><code>let myFriends = ["မောင်မောင်", "ခင်ခင်", "ကိုကို", "အေးအေး"];
+
+console.log(myFriends[0]);  // "မောင်မောင်"
+console.log(myFriends[2]);  // "ကိုကို"</code></pre>
+      </div>
+
+      <div class="content-box">
+        <h3>Code ရဲ့ ရှင်းလင်းချက်</h3>
+        <img src="./day_15_05.webp" alt="Code Explanation" />
+        <ul>
+          <li>
+            <strong>let myFriends = [...]:</strong> Array တစ်ခုဖန်တီးခြင်း
+          </li>
+          <li><strong>myFriends[0]:</strong> ပထမ နာမည်ကို ရယူခြင်း</li>
+          <li><strong>myFriends[2]:</strong> တတိယ နာမည်ကို ရယူခြင်း</li>
+        </ul>
+      </div>
+
+      <div class="content-box flex-box">
+        <img src="./day_15_06.jpg" alt="Array Illustration" />
+        <div>
+          <h4>Array ဆိုတာ ဘာလဲ?</h4>
+          <p>
+            JavaScript မှာ array ဆိုတာ တန်ဖိုးများစွာကို တစ်စုတည်း
+            သိမ်းဆည်းနိုင်တဲ့ data structure တစ်ခုဖြစ်ပါတယ်။
+          </p>
+        </div>
+      </div>
+
+      <div class="content-box">
+        <p>ဆိုတော့ နောက်ရက်တွေမှာ List (Array) တွေကို Programming မှာ ဘယ်လို ဖန်တီးမလဲ၊ List ထဲက အချက်အလက်တွေကို ဘယ်လို ထုတ်ယူမလဲ၊ ပြီးတော့ List (Array) တွေနဲ့ ဘာတွေ လုပ်လို့ရလဲဆိုတာတွေကို ပိုပြီး အသေးစိတ် လေ့လာသွားကြမယ်နော်! 😊</p>
+      </div>
+    </div>
+
+    <footer>&copy; 2025 JavaScript By NWT. All rights reserved.</footer>
+  </body>
+</html>
