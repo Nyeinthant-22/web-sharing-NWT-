@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Day 17 - List (Array) ထဲက အချက်အလက်တွေကို ပြောင်းလဲခြင်း (Modifying
+      Elements in a List/Array)
+    </title>
+    <link rel="icon" type="image/x-icon" href="./N_logo.png" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background-color: antiquewhite;
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+          sans-serif;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      .side-bar {
+        width: 100%;
+        background-color: #ffffff;
+        color: rgb(0, 0, 0);
+        padding: 20px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+        border-radius: 10px;
+        text-align: center;
+      }
+
+      .side-bar h2 {
+        margin-bottom: 20px;
+      }
+
+      .side-bar ul {
+        list-style: none;
+        display: flex;
+        justify-content: space-around;
+      }
+
+      .side-bar ul li {
+        margin: 10px 0;
+      }
+
+      .side-bar ul li a {
+        text-decoration: none;
+        color: rgb(83, 83, 83);
+        font-weight: bold;
+        transition: 0.5s ease;
+      }
+
+      .side-bar ul li a:hover {
+        color: rgb(0, 0, 0);
+      }
+
+      .container {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        margin: 30px;
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+      }
+
+      .main {
+        display: flex;
+        padding: 20px;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+
+      .content-box {
+        background-color: antiquewhite;
+        line-height: 1.8;
+        padding: 20px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+        border-radius: 10px;
+        flex: 2;
+        min-width: 300px;
+      }
+
+      .content-box h1 {
+        margin-bottom: 15px;
+      }
+
+      .content-box pre {
+        background-color: #ffffff;
+        padding: 10px;
+        margin: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+        border-radius: 10px;
+        border-left: 4px solid rgb(197, 80, 255);
+        overflow-x: auto;
+      }
+
+      .image-box {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+        min-width: 300px;
+      }
+
+      .image-box img {
+        width: 100%;
+        max-width: 250px;
+        border-radius: 10px;
+        object-fit: cover;
+      }
+
+      footer {
+        width: 100%;
+        background-color: #33495e;
+        padding: 20px;
+        color: white;
+        font-weight: bold;
+        text-align: center;
+        position: relative;
+        margin-top: auto;
+      }
+
+      ul.hashtags {
+        display: flex;
+        flex-wrap: wrap;
+        list-style: none;
+        margin-top: 20px;
+        gap: 20px;
+      }
+
+      ul.hashtags li {
+        background-color: #e1e1e1;
+        padding: 5px 10px;
+        border-radius: 10px;
+        color: rgb(0, 0, 0);
+        font-weight: bold;
+        font-size: 0.9em;
+      }
+
+      @media (max-width: 768px) {
+        body {
+          flex-direction: column;
+        }
+
+        
+          .main {
+            flex-direction: column;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 10px;
+          }
+
+          .content-box,
+          .image-box {
+            width: 100%;
+            flex: 1 1 100%;
+          }
+
+          .image-box {
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+          }
+
+          .image-box > div {
+            width: 45%;
+            max-width: 100%;
+            margin: 10px;
+          }
+
+          .side-bar {
+            width: 100%;
+            margin: 0 0 20px 0;
+          }
+
+          footer {
+            font-size: 14px;
+            padding: 15px;
+          }
+      
+      }
+    </style>
+  </head>
+  <body>
+    <div class="side-bar">
+      <h2>NWT Programming Basic</h2>
+      <ul>
+        <li><a href="https://nyeinthant-22.github.io/web-sharing-NWT-/Day_16/day_16">  Day 16 - Accessing Elements</a></li>
+        <li><a href="https://nyeinthant-22.github.io/web-sharing-NWT-/Day_16/day_17">  Day 17 - Modifying Elements</a></li>
+        <li><a href="#">  Day 18 - Coming Soon</a></li>
+      </ul>
+    </div>
+
+    <div class="container">
+      <div class="main">
+        <div class="content-box">
+          <h1>Day 17: List (Array) ထဲက အချက်အလက်တွေကို ပြောင်းလဲခြင်း</h1>
+
+          <p>
+            မင်္ဂလာပါ! 👋 မနေ့က List (Array) ထဲက အချက်အလက်တွေကို Index သုံးပြီး
+            ဘယ်လို ရယူရမလဲဆိုတာ လေ့လာခဲ့ကြတယ်နော်။ ဒီနေ့မှာတော့ အဲ့ဒီလို
+            ရယူထားတဲ့ အချက်အလက်တွေကို ပြန်ပြောင်းနည်းကို လေ့လာသွားကြမယ် 😉။
+          </p>
+
+          <h3>List (Array) ထဲက တန်ဖိုးတွေကို ပြောင်းလဲခြင်း</h3>
+
+          <p>
+            List (Array) ထဲမှာရှိတဲ့ တန်ဖိုးတွေကို ပြောင်းလဲဖို့အတွက်၊
+            ပြောင်းချင်တဲ့ အချက်အလက်ရဲ့ Index ကို သုံးပြီး တန်ဖိုးအသစ်တစ်ခု
+            ထည့်ပေးရပါတယ်။
+          </p>
+
+          <h4>ဥပမာ:</h4>
+          <pre><code>let myNumbers = [10, 20, 30, 40, 50];
+
+console.log(myNumbers); // အစက [10, 20, 30, 40, 50] ဆိုပြီး ပြမယ်
+
+myNumbers[1] = 25; // Index 1 မှာရှိတဲ့ 20 ကို 25 ပြောင်းလိုက်တာ
+
+console.log(myNumbers); // [10, 25, 30, 40, 50] ဆိုပြီး ပြောင်းသွားတာကို တွေ့ရမယ်
+
+myNumbers[3] = myNumbers[3] + 10; // Index 3 မှာရှိတဲ့ 40 ကို 10 ပေါင်းပြီး ပြန်ထည့်လိုက်တာ
+console.log(myNumbers);  // [10, 25, 30, 50, 50] ဆိုပြီး ပြောင်းသွားတာကို တွေ့ရမယ်</code></pre>
+
+          <h4>ရှင်းလင်းချက်</h4>
+          <ul>
+            <li>
+              <code>myNumbers[1] = 25;</code> ဆိုတာက
+              <code>myNumbers</code> Array ရဲ့ Index 1 နေရာမှာရှိတဲ့ တန်ဖိုးကို
+              25 နဲ့ အစားထိုးတာပါ။
+            </li>
+            <li>
+              <code>myNumbers[3] = myNumbers[3] + 10;</code> ဆိုတာက Index 3
+              မှာရှိတဲ့ တန်ဖိုးကို သူ့ထဲကတန်ဖိုး + 10 ပြန်ထည့်တာပါ။
+            </li>
+          </ul>
+
+          <h4>နောက်ထပ် ဥပမာ</h4>
+          <pre><code>let myFruits = ["apple", "banana", "orange"];
+
+myFruits[2] = "grape"; // "orange" ကို "grape" နဲ့ ပြောင်းလိုက်တာ
+console.log(myFruits); // ["apple", "banana", "grape"] ဆိုပြီး ပြမယ်
+
+myFruits[0] = myFruits[0].toUpperCase(); // "apple" ကို အကြီးစာလုံး "APPLE" ပြောင်းလိုက်တာ
+console.log(myFruits); // ["APPLE", "banana", "grape"] ဆိုပြီး ပြမယ်</code></pre>
+
+          <h4>ရှင်းလင်းချက်</h4>
+          <p>
+            JavaScript မှာ String တွေမှာလည်း လုပ်ဆောင်ချက်တွေ ရှိပါတယ်။
+            <code>.toUpperCase()</code> က String တစ်ခုကို အကြီးစာလုံး အဖြစ်
+            ပြောင်းပေးပါတယ်။
+          </p>
+
+          <p>
+            ဒီနေ့မှာတော့ List (Array) ထဲက အချက်အလက်တွေကို Index ကို သုံးပြီး
+            ဘယ်လို ပြောင်းလဲရမလဲဆိုတာကို လေ့လာခဲ့ကြပါတယ်။ Array ထဲက
+            တန်ဖိုးတွေကို ပြောင်းလဲခြင်းဟာ Data တွေကို ကိုင်တွယ်တဲ့နေရာမှာ
+            အရေးကြီးတဲ့ အခန်းကဏ္ဍတစ်ခုပါပဲ။ နောက်ရက်တွေမှာတော့ Array တွေနဲ့
+            ဘာတွေ ဆက်လုပ်လို့ရလဲဆိုတာကို ဆက်ပြီး လေ့လာသွားကြမယ်နော်။ 😊
+          </p>
+
+          <ul class="hashtags">
+            <li>#NWT</li>
+            <li>#programming</li>
+            <li>#list</li>
+            <li>#array</li>
+            <li>#modify</li>
+            <li>#change</li>
+            <li>#javascript</li>
+            <li>#အခြေခံ</li>
+            <li>#နည်းပညာ</li>
+          </ul>
+        </div>
+
+        <div class="image-box">
+          <a href="./day_17_01.png" target="_blank">
+            <img src="./day_17_01.png" alt="Array img 1" />
+          </a>
+
+          <a href="./day_17_02.png" target="_blank">
+            <img src="./day_17_02.png" alt="Array img 2" />
+          </a>
+
+          <a href="./day_17_03.jpg" target="_blank">
+            <img src="./day_17_03.jpg" alt="Array img 3" />
+          </a>
+
+          <a href="./day_17_04.jpg" target="_blank">
+            <img src="./day_17_04.jpg" alt="Array img 1" />
+          </a>
+
+          <a href="./day_17_05.png" target="_blank">
+            <img src="./day_17_05.png" alt="Array img 1" />
+          </a>
+
+          <a href="./day_17_06.jpg" target="_blank">
+            <img src="./day_17_06.jpg" alt="Array img 1" />
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <footer>&copy; 2025 | Built by NWT | Made with ❤</footer>
+  </body>
+</html>
