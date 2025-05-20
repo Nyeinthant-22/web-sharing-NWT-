@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Day 18 - List (Array) ထဲကို အချက်အလက်တွေ ထပ်ထည့်ခြင်း (Adding Elements)
+    </title>
+    <link rel="icon" type="image/x-icon" href="./N_logo.png" />
+    <style>
+      /* Copy the same CSS as day 17 */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background-color: antiquewhite;
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+          sans-serif;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+      .side-bar {
+        width: 100%;
+        background-color: #ffffff;
+        color: rgb(0, 0, 0);
+        padding: 20px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+        border-radius: 10px;
+        text-align: center;
+      }
+      .side-bar h2 {
+        margin-bottom: 20px;
+      }
+      .side-bar ul {
+        list-style: none;
+        display: flex;
+        justify-content: space-around;
+      }
+      .side-bar ul li {
+        margin: 10px 0;
+      }
+      .side-bar ul li a {
+        text-decoration: none;
+        color: rgb(83, 83, 83);
+        font-weight: bold;
+        transition: 0.5s ease;
+      }
+      .side-bar ul li a:hover {
+        color: rgb(0, 0, 0);
+      }
+      .container {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        margin: 30px;
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+      }
+      .main {
+        display: flex;
+        padding: 20px;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+      .content-box {
+        background-color: antiquewhite;
+        line-height: 1.8;
+        padding: 20px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+        border-radius: 10px;
+        flex: 2;
+        min-width: 300px;
+      }
+      .content-box h1 {
+        margin-bottom: 15px;
+      }
+      .content-box pre {
+        background-color: #ffffff;
+        padding: 10px;
+        margin: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+        border-radius: 10px;
+        border-left: 4px solid rgb(80, 175, 255);
+        overflow-x: auto;
+      }
+      .image-box {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+        min-width: 300px;
+      }
+      .image-box img {
+        width: 100%;
+        max-width: 250px;
+        border-radius: 10px;
+        object-fit: cover;
+      }
+      footer {
+        width: 100%;
+        background-color: #33495e;
+        padding: 20px;
+        color: white;
+        font-weight: bold;
+        text-align: center;
+        position: relative;
+        margin-top: auto;
+      }
+      ul.hashtags {
+        display: flex;
+        flex-wrap: wrap;
+        list-style: none;
+        margin-top: 20px;
+        gap: 20px;
+      }
+      ul.hashtags li {
+        background-color: #e1e1e1;
+        padding: 5px 10px;
+        border-radius: 10px;
+        color: rgb(0, 0, 0);
+        font-weight: bold;
+        font-size: 0.9em;
+      }
+      @media (max-width: 768px) {
+        .container {
+          margin: 10px;
+        }
+        .main {
+          flex-direction: column;
+          padding: 10px;
+        }
+        .content-box,
+        .image-box {
+          width: 100%;
+          flex: 1 1 100%;
+          min-width: 0;
+        }
+        .image-box {
+          flex-direction: row;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+        .image-box > div {
+          width: 45%;
+          max-width: 100%;
+          margin: 10px;
+        }
+        .side-bar {
+          width: 100%;
+          margin: 0 0 20px 0;
+        }
+        footer {
+          font-size: 14px;
+          padding: 15px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="side-bar">
+      <h2>NWT Programming Basic</h2>
+      <ul>
+        <li><a href="https://nyeinthant-22.github.io/web-sharing-NWT-/Day_17/day_17">  Day 17 - Modifying Elements</a></li>
+        <li><a href="https://nyeinthant-22.github.io/web-sharing-NWT-/Day_18/day_18">Day 18 - Adding Elements</a></li>
+        <li><a href="#">Day 19 - Coming Soon</a></li>
+      </ul>
+    </div>
+
+    <div class="container">
+      <div class="main">
+        <div class="content-box">
+          <h1>Day 18: List (Array) ထဲကို အချက်အလက်တွေ ထပ်ထည့်ခြင်း</h1>
+          <p>
+            မင်္ဂလာပါ! 👋 မနေ့က Array ထဲက တန်ဖိုးတွေကို ပြောင်းလဲနည်းကို
+            လေ့လာခဲ့ကြပါတယ်။ ဒီနေ့မှာတော့ Array ထဲကို အသစ်ထည့်တဲ့နည်းလမ်းတွေကို
+            လေ့လာသွားကြမယ် 😉။
+          </p>
+
+          <h3>1. <code>push()</code> နည်းလမ်း</h3>
+          <p>
+            <code>push()</code> ကို သုံးတဲ့အခါ Array ရဲ့ နောက်ဆုံးမှာ
+            တန်ဖိုးအသစ်ထပ်ထည့်တယ်။
+          </p>
+          <pre><code>let colors = ["red", "green"];
+colors.push("blue");
+console.log(colors); // ["red", "green", "blue"]</code></pre>
+
+          <h3>2. <code>unshift()</code> နည်းလမ်း</h3>
+          <p>
+            <code>unshift()</code> ကို သုံးတဲ့အခါ Array ရဲ့အစမှာ
+            တန်ဖိုးအသစ်ထပ်ထည့်တယ်။
+          </p>
+          <pre><code>let fruits = ["banana", "orange"];
+fruits.unshift("apple");
+console.log(fruits); // ["apple", "banana", "orange"]</code></pre>
+
+          <h4>ရှင်းလင်းချက်</h4>
+          <ul>
+            <li><code>push()</code> ဟာ နောက်ဆုံး Index မှာ ထပ်ထည့်တာပါ။</li>
+            <li><code>unshift()</code> က အစဆုံး Index မှာ ထပ်ထည့်တာပါ။</li>
+          </ul>
+
+          <p>
+            ဒီနေ့ကနေပြီး Array ထဲကို တန်ဖိုးအသစ်တွေ ထည့်နည်းကိုသိပြီးဖြစ်ပြီ။
+            နောက်အကြောင်းအရာတွေမှာတော့ Element တွေကို ဖျက်တာ (remove) နည်းကို
+            လေ့လာသွားကြမယ်နော်။ 😊
+          </p>
+
+          <ul class="hashtags">
+            <li>#NWT</li>
+            <li>#programming</li>
+            <li>#array</li>
+            <li>#add</li>
+            <li>#push</li>
+            <li>#unshift</li>
+            <li>#javascript</li>
+            <li>#နည်းပညာ</li>
+          </ul>
+        </div>
+
+        <div class="image-box">
+          <a href="./day_18_01.jpg" target="_blank"
+            ><img src="./day_18_01.jpg" alt="Array Add 1"
+          /></a>
+          <a href="./day_18_02.webp" target="_blank"
+            ><img src="./day_18_02.webp" alt="Array Add 2"
+          /></a>
+          <a href="./day_18_03.png" target="_blank"
+            ><img src="./day_18_03.png" alt="Array Add 2"
+          /></a>
+          <a href="./day_18_04.png" target="_blank"
+            ><img src="./day_18_04.png" alt="Array Add 2"
+          /></a>
+          <a href="./day_18_05.png" target="_blank"
+            ><img src="./day_18_05.png" alt="Array Add 2"
+          /></a>
+        </div>
+      </div>
+    </div>
+
+    <footer>&copy; 2025 | Built by NWT | Made with ❤</footer>
+  </body>
+</html>
