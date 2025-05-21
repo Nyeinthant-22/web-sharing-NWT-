@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Day 19 - List (Array) ထဲက အချက်အလက်တွေကို ဖယ်ရှားခြင်း (Removing Elements)
+    </title>
+    <link rel="icon" type="image/x-icon" href="./N_logo.png" />
+    <style>
+      /* Same CSS as Day 18 - Already well structured */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background-color: antiquewhite;
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+          sans-serif;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+      .side-bar {
+        width: 100%;
+        background-color: #ffffff;
+        color: rgb(0, 0, 0);
+        padding: 20px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+        border-radius: 10px;
+        text-align: center;
+      }
+      .side-bar h2 {
+        margin-bottom: 20px;
+      }
+      .side-bar ul {
+        list-style: none;
+        display: flex;
+        justify-content: space-around;
+      }
+      .side-bar ul li {
+        margin: 10px 0;
+      }
+      .side-bar ul li a {
+        text-decoration: none;
+        color: rgb(83, 83, 83);
+        font-weight: bold;
+        transition: 0.5s ease;
+      }
+      .side-bar ul li a:hover {
+        color: rgb(0, 0, 0);
+      }
+      .container {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        margin: 30px;
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+      }
+      .main {
+        display: flex;
+        padding: 20px;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+      .content-box {
+        background-color: antiquewhite;
+        line-height: 1.8;
+        padding: 20px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+        border-radius: 10px;
+        flex: 2;
+        min-width: 300px;
+      }
+      .content-box h1 {
+        margin-bottom: 15px;
+      }
+      .content-box pre {
+        background-color: #ffffff;
+        padding: 10px;
+        margin: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+        border-radius: 10px;
+        border-left: 4px solid rgb(255, 100, 100);
+        overflow-x: auto;
+      }
+      .image-box {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+        min-width: 300px;
+      }
+      .image-box img {
+        width: 100%;
+        max-width: 250px;
+        border-radius: 10px;
+        object-fit: cover;
+      }
+      footer {
+        width: 100%;
+        background-color: #33495e;
+        padding: 20px;
+        color: white;
+        font-weight: bold;
+        text-align: center;
+        position: relative;
+        margin-top: auto;
+      }
+      ul.hashtags {
+        display: flex;
+        flex-wrap: wrap;
+        list-style: none;
+        margin-top: 20px;
+        gap: 20px;
+      }
+      ul.hashtags li {
+        background-color: #e1e1e1;
+        padding: 5px 10px;
+        border-radius: 10px;
+        color: rgb(0, 0, 0);
+        font-weight: bold;
+        font-size: 0.9em;
+      }
+      @media (max-width: 768px) {
+        .container {
+          margin: 10px;
+        }
+        .main {
+          flex-direction: column;
+          padding: 10px;
+        }
+        .content-box,
+        .image-box {
+          width: 100%;
+          flex: 1 1 100%;
+          min-width: 0;
+        }
+        .image-box {
+          flex-direction: row;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+        .image-box > div {
+          width: 45%;
+          max-width: 100%;
+          margin: 10px;
+        }
+        .side-bar {
+          width: 100%;
+          margin: 0 0 20px 0;
+        }
+        footer {
+          font-size: 14px;
+          padding: 15px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="side-bar">
+      <h2>NWT Programming Basic</h2>
+      <ul>
+        <li>
+          <a
+            href="https://nyeinthant-22.github.io/web-sharing-NWT-/Day_18/day_18"
+            >Day 18 - Adding Elements</a
+          >
+        </li>
+
+        <li>
+          <a
+            href="https://nyeinthant-22.github.io/web-sharing-NWT-/Day_19/day_19"
+            >Day 19 - Removing Elements</a
+          >
+        </li>
+        <li><a href="#">Day 20- Coming Soon</a></li>
+      </ul>
+    </div>
+
+    <div class="container">
+      <div class="main">
+        <div class="content-box">
+          <h1>Day 19: List (Array) ထဲက အချက်အလက်တွေကို ဖယ်ရှားခြင်း</h1>
+          <p>
+            မင်္ဂလာပါ! 👋 မနေ့က Array ထဲကို အသစ်ထည့်နည်းကို လေ့လာခဲ့တယ်နော်။
+            ဒီနေ့တော့ ဖယ်ရှားနည်းတွေကို လေ့လာမယ်။
+          </p>
+
+          <h3>1. <code>pop()</code> နည်းလမ်း</h3>
+          <p>
+            <code>pop()</code> က Array ရဲ့ နောက်ဆုံးမှာရှိတဲ့ တန်ဖိုးကို
+            ဖယ်ရှားတယ်။
+          </p>
+          <pre><code>let myFruits = ["apple", "banana", "orange", "grape"];
+let removedFruit = myFruits.pop();
+console.log(myFruits);      // ["apple", "banana", "orange"]
+console.log(removedFruit);  // "grape"</code></pre>
+
+          <h4>ရှင်းလင်းချက်</h4>
+          <ul>
+            <li>
+              <code>pop()</code> က နောက်ဆုံး index
+              မှာရှိတဲ့တန်ဖိုးကိုဖယ်ရှားတယ်။
+            </li>
+            <li>ဖယ်ရှားတဲ့တန်ဖိုးကို Variable ထဲသိမ်းလို့ရတယ်။</li>
+          </ul>
+
+          <h3>2. <code>shift()</code> နည်းလမ်း</h3>
+          <p><code>shift()</code> က အစမှာရှိတဲ့တန်ဖိုးကိုဖယ်ရှားတယ်။</p>
+          <pre><code>let myNumbers = [10, 20, 30, 40];
+let removedNumber = myNumbers.shift();
+console.log(myNumbers);      // [20, 30, 40]
+console.log(removedNumber);  // 10</code></pre>
+
+          <h4>ရှင်းလင်းချက်</h4>
+          <ul>
+            <li><code>shift()</code> က အစဆုံးတန်ဖိုးကိုဖယ်ရှားတယ်။</li>
+            <li>ဖယ်ရှားတဲ့တန်ဖိုးကိုလည်း သိမ်းလို့ရတယ်။</li>
+          </ul>
+
+          <p>
+            နောက်တစ်နေ့မှာတော့ Array ထဲက တခုချင်းစီကို ဘယ်လိုဖျက်မလဲဆိုတာ
+            တိုးမြှင့်ပြီး ဆက်လေ့လာမှာပါ။ 😊
+          </p>
+
+          <ul class="hashtags">
+            <li>#NWT</li>
+            <li>#programming</li>
+            <li>#array</li>
+            <li>#remove</li>
+            <li>#pop</li>
+            <li>#shift</li>
+            <li>#javascript</li>
+            <li>#နည်းပညာ</li>
+          </ul>
+        </div>
+
+        <div class="image-box">
+          <!-- You can add new images related to removing elements here -->
+          <a href="./day_19_01.png" target="_blank"
+            ><img src="./day_19_01.png" alt="Array Remove 1"
+          /></a>
+          <a href="./day_19_02.png" target="_blank"
+            ><img src="./day_19_02.png" alt="Array Remove 2" /></a
+          ><a href="./day_19_03.jpg" target="_blank"
+            ><img src="./day_19_03.jpg" alt="Array Remove 2" /></a
+          ><a href="./day_19_04.webp" target="_blank"
+            ><img src="./day_19_04.webp" alt="Array Remove 2" /></a
+          ><a href="./day_19_05.jpg" target="_blank"
+            ><img src="./day_19_05.jpg" alt="Array Remove 2"
+          /></a>
+        </div>
+      </div>
+    </div>
+
+    <footer>&copy; 2025 | Built by NWT | Made with ❤</footer>
+  </body>
+</html>
