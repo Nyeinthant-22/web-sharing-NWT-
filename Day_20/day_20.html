@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Day 20 - List (Array) ထဲက အချက်အလက်တွေကို တစ်ခုချင်းစီ လှည့်ပတ်ကြည့်ခြင်း
+    </title>
+    <link rel="icon" type="image/x-icon" href="./N_logo.png" />
+    <style>
+      /* Same CSS as Day 19 */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background-color: antiquewhite;
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+          sans-serif;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+      .side-bar {
+        width: 100%;
+        background-color: #ffffff;
+        color: rgb(0, 0, 0);
+        padding: 20px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+        border-radius: 10px;
+        text-align: center;
+      }
+      .side-bar h2 {
+        margin-bottom: 20px;
+      }
+      .side-bar ul {
+        list-style: none;
+        display: flex;
+        justify-content: space-around;
+      }
+      .side-bar ul li a {
+        text-decoration: none;
+        color: rgb(83, 83, 83);
+        font-weight: bold;
+        transition: 0.5s ease;
+      }
+      .side-bar ul li a:hover {
+        color: rgb(0, 0, 0);
+      }
+      .container {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        margin: 30px;
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+      }
+      .main {
+        display: flex;
+        padding: 20px;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+      .content-box {
+        background-color: antiquewhite;
+        line-height: 1.8;
+        padding: 20px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+        border-radius: 10px;
+        flex: 2;
+        min-width: 300px;
+      }
+      .content-box pre {
+        background-color: #ffffff;
+        padding: 10px;
+        margin: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+        border-radius: 10px;
+        border-left: 4px solid rgb(255, 100, 100);
+        overflow-x: auto;
+      }
+      .image-box {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+        min-width: 300px;
+      }
+      .image-box img {
+        width: 100%;
+        max-width: 250px;
+        border-radius: 10px;
+        object-fit: cover;
+      }
+      footer {
+        width: 100%;
+        background-color: #33495e;
+        padding: 20px;
+        color: white;
+        font-weight: bold;
+        text-align: center;
+        position: relative;
+        margin-top: auto;
+      }
+      ul.hashtags {
+        display: flex;
+        flex-wrap: wrap;
+        list-style: none;
+        margin-top: 20px;
+        gap: 20px;
+      }
+      ul.hashtags li {
+        background-color: #e1e1e1;
+        padding: 5px 10px;
+        border-radius: 10px;
+        color: rgb(0, 0, 0);
+        font-weight: bold;
+        font-size: 0.9em;
+      }
+      @media (max-width: 768px) {
+        .container {
+          margin: 10px;
+        }
+        .main {
+          flex-direction: column;
+          padding: 10px;
+        }
+        .content-box,
+        .image-box {
+          width: 100%;
+          flex: 1 1 100%;
+          min-width: 0;
+        }
+        .image-box {
+          flex-direction: row;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+        .image-box > div {
+          width: 45%;
+          max-width: 100%;
+          margin: 10px;
+        }
+        footer {
+          font-size: 14px;
+          padding: 15px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="side-bar">
+      <h2>NWT Programming Basic</h2>
+      <ul>
+        <li><a href="https://nyeinthant-22.github.io/web-sharing-NWT-/Day_19/day_19">Day 19 - Removing Elements</a></li>
+        <li><a href="https://nyeinthant-22.github.io/web-sharing-NWT-/Day_20/day_20">Day 20 - Looping Elements</a></li>
+        <li><a href="#">Day 21 - Coming Soon</a></li>
+      </ul>
+    </div>
+    <div class="container">
+      <div class="main">
+        <div class="content-box">
+          <h1>
+            Day 20: List (Array) ထဲက အချက်အလက်တွေကို တစ်ခုချင်းစီ
+            လှည့်ပတ်ကြည့်ခြင်း
+          </h1>
+          <p>
+            မင်္ဂလာပါ! 👋 မနေ့က Array ထဲက အချက်အလက်တွေကို ဘယ်လို
+            ဖယ်ရှားရမလဲဆိုတာ လေ့လာခဲ့ကြတယ်နော်။ ဒီနေ့မှာတော့ Array ထဲမှာရှိတဲ့
+            အချက်အလက်တွေကို တစ်ခုချင်းစီ လှည့်ကြည့်ဖို့အတွက် Loop နဲ့
+            ဘယ်လိုလုပ်ရမလဲဆိုတာ လေ့လာကြမယ်။
+          </p>
+
+          <h3>1. Looping ဆိုတာဘာလဲ?</h3>
+          <p>
+            Looping ဆိုတာက Array ထဲမှာရှိတဲ့ တန်ဖိုးတွေကို တစ်ခုချင်းစီ
+            အလှည့်ကျလုပ်ဆောင်ဖို့အသုံးပြုတဲ့နည်းလမ်းတစ်ခုပါ။ ဥပမာအားဖြင့်
+            မင်းမှာ fruits အမည်တွေထည့်ထားတဲ့ array ရှိတယ်ဆိုပါစို့၊ မင်းက
+            `console.log()` နဲ့ တစ်ခုချင်းစီကိုဖော်ပြချင်တယ်။ အဲ့ဒီအချိန်မှာ
+            Loop ကအထောက်အကူဖြစ်ပါတယ်။
+          </p>
+
+          <h3>2. `for` loop နဲ့ Looping</h3>
+          <p>
+            JavaScript မှာ `for` loop ကိုအသုံးပြုပြီး Array ထဲက element
+            တစ်ခုချင်းစီကို ပြသလို့ရတယ်။
+          </p>
+
+          <pre><code>let myFruits = ["apple", "banana", "orange", "grape"];
+
+for (let i = 0; i &lt; myFruits.length; i++) {
+  console.log(myFruits[i]);
+}</code></pre>
+
+          <h4>ရှင်းလင်းချက်</h4>
+          <ul>
+            <li><code>i = 0</code> က Loop ကို 0 (ပထမ element) ကစတင်တာပါ။</li>
+            <li>
+              <code>i &lt; myFruits.length</code> ဆိုတာက array ရဲ့ နောက်ဆုံးထိသာ
+              loop run ဖို့ဖြစ်တယ်။
+            </li>
+            <li>
+              <code>myFruits[i]</code> က index အလိုက် array ထဲက
+              တန်ဖိုးကိုဖော်ပြတာ။
+            </li>
+          </ul>
+
+          <h3>3. တခြား Loop ပုံစံ - `for...of`</h3>
+          <p>
+            ES6 မှာအသစ်ဖြစ်တဲ့ `for...of` loop ကိုလည်း Array အတွက်
+            အသုံးပြုလို့ရတယ်။
+          </p>
+          <pre><code>for (let fruit of myFruits) {
+  console.log(fruit);
+}</code></pre>
+
+          <h4>ရှင်းလင်းချက်</h4>
+          <ul>
+            <li>
+              <code>fruit</code> ဟာ Array ထဲက တစ်ခုချင်းစီကို ကိုယ်စားပြုတယ်။
+            </li>
+            <li>Code ပိုပြီး ဖတ်ရလွယ်တယ်။</li>
+          </ul>
+
+          <p>
+            နောက်တစ်နေ့မှာတော့ Loop ကို အသုံးပြုပြီး Array ထဲက တန်ဖိုးတွေကို
+            ပြောင်းလဲဖို့နည်းလမ်းတွေကို လေ့လာသွားမယ်။ 😉
+          </p>
+
+          <ul class="hashtags">
+            <li>#NWT</li>
+            <li>#programming</li>
+            <li>#array</li>
+            <li>#loop</li>
+            <li>#forloop</li>
+            <li>#javascript</li>
+            <li>#နည်းပညာ</li>
+          </ul>
+        </div>
+
+        <div class="image-box">
+          <a href="./day_20_01.png" target="_blank"
+            ><img src="./day_20_01.png" alt="Array Loop 1"
+          /></a>
+          <a href="./day_20_02.png" target="_blank"
+            ><img src="./day_20_02.png" alt="Array Loop 2" /> </a
+          ><a href="./day_20_03.png" target="_blank"
+            ><img src="./day_20_03.png" alt="Array Loop 2" /> </a
+          ><a href="./day_20_04.webp" target="_blank"
+            ><img src="./day_20_04.webp" alt="Array Loop 2" /> </a
+          ><a href="./day_20_05.png" target="_blank"
+            ><img src="./day_20_05.png" alt="Array Loop 2" /></a
+          ><a href="./day_20_06.webp" target="_blank"
+            ><img src="./day_20_06.webp" alt="Array Loop 2" /></a
+          ><a href="./day_20_07.png" target="_blank"
+            ><img src="./day_20_07.png" alt="Array Loop 2"
+          /></a>
+        </div>
+      </div>
+    </div>
+
+    <footer>&copy; 2025 | Built by NWT | Made with ❤</footer>
+  </body>
+</html>
