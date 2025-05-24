@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Day 21 - List (Array) တွေကို လှည့်ပတ်ဖို့ နောက်ထပ်နည်းလမ်း - for...of Loop
+    </title>
+    <link rel="icon" type="image/x-icon" href="./N_logo.png" />
+    <style>
+      /* Same CSS as Day 19 */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background-color: antiquewhite;
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+      .side-bar {
+        width: 100%;
+        background-color: #ffffff;
+        color: rgb(0, 0, 0);
+        padding: 20px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+        border-radius: 10px;
+        text-align: center;
+      }
+      .side-bar h2 {
+        margin-bottom: 20px;
+      }
+      .side-bar ul {
+        list-style: none;
+        display: flex;
+        justify-content: space-around;
+      }
+      .side-bar ul li a {
+        text-decoration: none;
+        color: rgb(83, 83, 83);
+        font-weight: bold;
+        transition: 0.5s ease;
+      }
+      .side-bar ul li a:hover {
+        color: rgb(0, 0, 0);
+      }
+      .container {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        margin: 30px;
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+      }
+      .main {
+        display: flex;
+        padding: 20px;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+      .content-box {
+        background-color: antiquewhite;
+        line-height: 1.8;
+        padding: 20px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+        border-radius: 10px;
+        flex: 2;
+        min-width: 300px;
+      }
+      .content-box pre {
+        background-color: #ffffff;
+        padding: 10px;
+        margin: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+        border-radius: 10px;
+        border-left: 4px solid rgb(255, 100, 100);
+        overflow-x: auto;
+      }
+      .image-box {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+        min-width: 300px;
+      }
+      .image-box img {
+        width: 100%;
+        max-width: 250px;
+        border-radius: 10px;
+        object-fit: cover;
+      }
+      footer {
+        width: 100%;
+        background-color: #33495e;
+        padding: 20px;
+        color: white;
+        font-weight: bold;
+        text-align: center;
+        position: relative;
+        margin-top: auto;
+      }
+      ul.hashtags {
+        display: flex;
+        flex-wrap: wrap;
+        list-style: none;
+        margin-top: 20px;
+        gap: 20px;
+      }
+      ul.hashtags li {
+        background-color: #e1e1e1;
+        padding: 5px 10px;
+        border-radius: 10px;
+        color: rgb(0, 0, 0);
+        font-weight: bold;
+        font-size: 0.9em;
+      }
+      @media (max-width: 768px) {
+        .container {
+          margin: 10px;
+        }
+        .main {
+          flex-direction: column;
+          padding: 10px;
+        }
+        .content-box,
+        .image-box {
+          width: 100%;
+          flex: 1 1 100%;
+          min-width: 0;
+        }
+        .image-box {
+          flex-direction: row;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+        .image-box > div {
+          width: 45%;
+          max-width: 100%;
+          margin: 10px;
+        }
+        footer {
+          font-size: 14px;
+          padding: 15px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="side-bar">
+      <h2>NWT Programming Basic</h2>
+      <ul>
+        <li><a href="https://nyeinthant-22.github.io/web-sharing-NWT-/Day_20/day_20">Day 20 - Looping Elements</a></li>
+        <li><a href="https://nyeinthant-22.github.io/web-sharing-NWT-/Day_21/day_21">Day 21 - for...of Loop</a></li>
+        <li><a href="#">Day 22 - Coming Soon</a></li>
+      </ul>
+    </div>
+    <div class="container">
+      <div class="main">
+        <div class="content-box">
+          <h1>Day 21: List (Array) တွေကို လှည့်ပတ်ဖို့ နောက်ထပ်နည်းလမ်း - for...of Loop</h1>
+          <p>မင်္ဂလာပါ! 👋 မနေ့က List (Array) ထဲက အချက်အလက်တွေကို <code>for</code> loop ကို သုံးပြီး တစ်ခုချင်းစီ လှည့်ပတ်ကြည့်နည်းကို လေ့လာခဲ့ကြတယ်နော်။ `for` loop က Index တွေကို သုံးပြီး လည်ပတ်တာဖြစ်ပါတယ်။ ဒီနေ့မှာတော့ Array ထဲက အချက်အလက်တွေကို ပိုပြီး ရိုးရှင်းတဲ့ နည်းလမ်းနဲ့ တစ်ခုချင်းစီ လှည့်ပတ်ကြည့်နိုင်တဲ့ နောက်ထပ် Loop အမျိုးအစားတစ်ခုအကြောင်း ပြောပြမယ်။ အဲ့ဒါကတော့ <strong>for...of loop</strong> ပါပဲ 😉။</p>
+
+          <h3>for...of Loop ဆိုတာ ဘာလဲ?</h3>
+          <p>for...of loop က Array ထဲက အချက်အလက်တွေကို သူ့ရဲ့ Index နံပါတ်ကို စိတ်ပူစရာမလိုဘဲ တန်ဖိုးတစ်ခုချင်းစီကို တိုက်ရိုက် ရယူပြီး လှည့်ပတ်နိုင်ပါတယ်။ `for` loop ထက် ပိုပြီး ဖတ်လို့ကောင်းပြီး ရေးရတာ ပိုလွယ်ပါတယ်။</p>
+
+          <h3>Code Example:</h3>
+          <pre><code>let fruits = ["ပန်းသီး", "ငှက်ပျောသီး", "လိမ္မော်သီး", "စပျစ်သီး"];
+
+for (let fruit of fruits) {
+  console.log(fruit + " ကို ကြိုက်တယ်!");
+}</code></pre>
+
+          <h3>Output:</h3>
+          <pre><code>ပန်းသီး ကို ကြိုက်တယ်!
+ငှက်ပျောသီး ကို ကြိုက်တယ်!
+လိမ္မော်သီး ကို ကြိုက်တယ်!
+စပျစ်သီး ကို ကြိုက်တယ်!</code></pre>
+
+          <h3>🔍 Summary:</h3>
+          <ul>
+            <li><code>for...of</code> loop က ပိုလွယ်တယ်၊ ရှင်းလင်းတယ်။</li>
+            <li>Index မသုံးချင်တဲ့အခါ အသုံးဝင်တယ်။</li>
+            <li>Array ထဲက တန်ဖိုးတစ်ခုချင်းစီကို ပြီးစီးစွာ loop လုပ်နိုင်တယ်။</li>
+          </ul>
+
+          <ul class="hashtags">
+            <li>#programming</li>
+            <li>#list</li>
+            <li>#array</li>
+            <li>#loop</li>
+            <li>#forofloop</li>
+            <li>#javascript</li>
+            <li>#အခြေခံ</li>
+            <li>#နည်းပညာ</li>
+            <li>#မြန်မာ</li>
+          </ul>
+        </div>
+
+        <!-- ✅ Added image section for Day 21 -->
+        <div class="image-box">
+          <img src="./day_21_01.png" alt="for...of loop example" />
+          <img src="./day_21_02.png" alt="for...of loop example" />
+          <img src="./day_21_03.png" alt="for...of loop example" />
+          <img src="./day_21_04.png" alt="for...of loop example" />
+          <img src="./day_21_05.jpg" alt="for...of loop example" />
+          <img src="./day_21_06.png" alt="for...of loop example" />
+        </div>
+      </div>
+    </div>
+    <footer>
+      © 2025 NWT Programming Basic — All rights reserved
+    </footer>
+  </body>
+</html>
