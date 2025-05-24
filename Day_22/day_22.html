@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Day 22 - List (Array) တွေကို လှည့်ပတ်ဖို့ နောက်ထပ်နည်းလမ်း - while Loop
+    </title>
+    <link rel="icon" type="image/x-icon" href="./N_logo.png" />
+    <style>
+      /* Same CSS as Day 19 */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background-color: antiquewhite;
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+      .side-bar {
+        width: 100%;
+        background-color: #ffffff;
+        color: rgb(0, 0, 0);
+        padding: 20px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+        border-radius: 10px;
+        text-align: center;
+      }
+      .side-bar h2 {
+        margin-bottom: 20px;
+      }
+      .side-bar ul {
+        list-style: none;
+        display: flex;
+        justify-content: space-around;
+      }
+      .side-bar ul li a {
+        text-decoration: none;
+        color: rgb(83, 83, 83);
+        font-weight: bold;
+        transition: 0.5s ease;
+      }
+      .side-bar ul li a:hover {
+        color: rgb(0, 0, 0);
+      }
+      .container {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        margin: 30px;
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+      }
+      .main {
+        display: flex;
+        padding: 20px;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+      .content-box {
+        background-color: antiquewhite;
+        line-height: 1.8;
+        padding: 20px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+        border-radius: 10px;
+        flex: 2;
+        min-width: 300px;
+      }
+      .content-box pre {
+        background-color: #ffffff;
+        padding: 10px;
+        margin: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+        border-radius: 10px;
+        border-left: 4px solid rgb(255, 100, 100);
+        overflow-x: auto;
+      }
+      .image-box {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+        min-width: 300px;
+      }
+      .image-box img {
+        width: 100%;
+        max-width: 250px;
+        border-radius: 10px;
+        object-fit: cover;
+      }
+      footer {
+        width: 100%;
+        background-color: #33495e;
+        padding: 20px;
+        color: white;
+        font-weight: bold;
+        text-align: center;
+        position: relative;
+        margin-top: auto;
+      }
+      ul.hashtags {
+        display: flex;
+        flex-wrap: wrap;
+        list-style: none;
+        margin-top: 20px;
+        gap: 20px;
+      }
+      ul.hashtags li {
+        background-color: #e1e1e1;
+        padding: 5px 10px;
+        border-radius: 10px;
+        color: rgb(0, 0, 0);
+        font-weight: bold;
+        font-size: 0.9em;
+      }
+      @media (max-width: 768px) {
+        .container {
+          margin: 10px;
+        }
+        .main {
+          flex-direction: column;
+          padding: 10px;
+        }
+        .content-box,
+        .image-box {
+          width: 100%;
+          flex: 1 1 100%;
+          min-width: 0;
+        }
+        .image-box {
+          flex-direction: row;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+        .image-box > div {
+          width: 45%;
+          max-width: 100%;
+          margin: 10px;
+        }
+        footer {
+          font-size: 14px;
+          padding: 15px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="side-bar">
+      <img src="./N_logo.png" style="width: 30px; border-radius: 10px;" alt="">
+      <h2>NWT Programming Basic</h2>
+      <ul>
+        <li><a href="https://nyeinthant-22.github.io/web-sharing-NWT-/Day_21/day_21">Day 21 - for...of Loop</a></li>
+        <li><a href="https://nyeinthant-22.github.io/web-sharing-NWT-/Day_22/day_22">Day 22 - while Loop</a></li>
+        <li><a href="#">Day 23 - Comming Soon</a></li>
+      </ul>
+    </div>
+    <div class="container">
+      <div class="main">
+        <div class="content-box">
+          <h1>Day 22: List (Array) တွေကို လှည့်ပတ်ဖို့ နောက်ထပ်နည်းလမ်း - while Loop</h1>
+          <p>မင်္ဂလာပါ! 👋 မနေ့က List (Array) တွေကို <code>for...of</code> loop နဲ့ ဘယ်လို လှည့်ပတ်ကြည့်ရမလဲဆိုတာ လေ့လာခဲ့ကြတယ်။ ဒီနေ့မှာတော့ Array တွေကို လှည့်ပတ်ဖို့ နောက်ထပ် အရေးကြီးတဲ့ Loop အမျိုးအစားတစ်ခုဖြစ်တဲ့ <strong>while loop</strong> အကြောင်း လေ့လာသွားကြမယ် 😉။</p>
+
+          <h3>while Loop ဆိုတာ ဘာလဲ?</h3>
+          <p><code>while</code> loop ကတော့ သတ်မှတ်ထားတဲ့ အခြေအနေတစ်ခု မှန်နေသရွေ့ (true ဖြစ်နေသရွေ့) Code တွေကို ထပ်ခါထပ်ခါ လုပ်ဆောင်ပေးပါတယ်။ `for` loop လိုမျိုး အကြိမ်ရေ အတိအကျ မသိတဲ့အခါမျိုးမှာ သုံးဖို့ ပိုအဆင်ပြေပါတယ်။</p>
+
+          <h3>while Loop က ဘယ်လို အလုပ်လုပ်လဲ?</h3>
+          <ol>
+            <li><code>while</code> loop စတဲ့အခါမှာ ပေးထားတဲ့ အခြေအနေကို စစ်ဆေးပါတယ်။</li>
+            <li>အခြေအနေက <code>true</code> ဆိုရင် Loop ထဲက Code တွေကို လုပ်ဆောင်ပါတယ်။</li>
+            <li>Code တွေ လုပ်ဆောင်ပြီးရင် အခြေအနေကို ပြန်စစ်ပါတယ်။</li>
+            <li>အခြေအနေက <code>true</code> ဖြစ်နေသေးရင် Code တွေကို ထပ်လုပ်ဆောင်ပါတယ်။ <code>false</code> ဖြစ်သွားမှ Loop က ရပ်သွားမှာပါ။</li>
+          </ol>
+
+          <h3>ရိုးရှင်းသော Code ဥပမာ (JavaScript ဖြင့်):</h3>
+          <pre><code>let colors = ["အနီ", "အဝါ", "အစိမ်း", "အပြာ"];
+let i = 0; // စမှတ် (index 0 ကနေ စမယ်)
+
+while (i < colors.length) { // i က Array ရဲ့ အရှည်ထက် ငယ်နေသရွေ့ Loop လည်ပတ်မယ်
+  console.log(colors[i]); // လက်ရှိ index မှာရှိတဲ့ အရောင်ကို ထုတ်ပြမယ်
+  i++; // index ကို ၁ တိုးပေးမယ် (နောက်တစ်ရောင်ကို ရည်ညွှန်းဖို့)
+}</code></pre>
+
+          <h3>Code ရဲ့ ရှင်းလင်းချက်:</h3>
+          <ul>
+            <li><code>let colors = ["အနီ", "အဝါ", "အစိမ်း", "အပြာ"];</code>: ဒါက <code>colors</code> ဆိုတဲ့ Array တစ်ခုကို ဖန်တီးလိုက်တာပါ။</li>
+            <li><code>let i = 0;</code>: <code>i</code> ဆိုတဲ့ Variable ကို <code>0</code> နဲ့ စတင်သတ်မှတ်လိုက်ပါတယ်။ <code>i</code> က Array ရဲ့ index ကို ကိုယ်စားပြုပါတယ်။</li>
+            <li><code>while (i < colors.length)</code>: ဒါက <code>while</code> loop ရဲ့ အခြေအနေပါ။ <code>i</code> ရဲ့ တန်ဖိုးဟာ <code>colors</code> Array ရဲ့ အရှည်ထက် ငယ်နေသရွေ့ Loop က ဆက်လည်ပတ်နေပါမယ်။</li>
+            <li><code>console.log(colors[i]);</code>: ဒါက Loop တစ်ခါလည်တိုင်း လုပ်ဆောင်မယ့် Code ပါ။ <code>colors[i]</code> က လက်ရှိ <code>i</code> ရဲ့ တန်ဖိုး (index) မှာရှိတဲ့ အရောင်ကို ထုတ်ပြပါတယ်။</li>
+            <li><code>i++;</code>: Loop တစ်ခါလည်ပြီးတိုင်း <code>i</code> ရဲ့ တန်ဖိုးကို ၁ တိုးပေးပါတယ်။ ဒါမှ နောက်တစ်ကြိမ် လည်တဲ့အခါ နောက်ထပ် အရောင်ကို ထုတ်ပြမှာပါ။</li>
+          </ul>
+
+          <h3>ဒီ Code ကို Run လိုက်ရင် ဘာထွက်လာမလဲ?</h3>
+          <pre><code>အနီ
+အဝါ
+အစိမ်း
+အပြာ</code></pre>
+
+          <h3><code>while</code> Loop ကို ဘယ်အချိန်မှာ သုံးမလဲ?</h3>
+          <ul>
+            <li>Loop ဘယ်နှစ်ခါ လည်ရမယ်ဆိုတာ အတိအကျ မသိတဲ့အခါ (ဥပမာ: User က input ထည့်နေသရွေ့)</li>
+            <li>အခြေအနေတစ်ခု ပြည့်စုံတဲ့အထိ Code တွေကို ထပ်ခါထပ်ခါ လုပ်ဆောင်ချင်တဲ့အခါ</li>
+          </ul>
+
+          <h3>နောက်ထပ် ဥပမာ</h3>
+          <pre><code>let numbers = [1, 2, 3, 4, 5];
+let total = 0;
+let j = 0;
+
+while (j < numbers.length) {
+  total += numbers[j]; // Array ထဲက နံပါတ်တွေကို ပေါင်းထည့်
+  j++;
+}
+
+console.log("စုစုပေါင်း: " + total); // စုစုပေါင်းကို ထုတ်ပြမယ် (15)
+</code></pre>
+
+          <p><strong>မှတ်သားရန်:</strong></p>
+          <p><code>while</code> loop ကို သုံးတဲ့အခါ Loop က မဆုံးတော့ဘဲ ထာဝရလည်နေနိုင်တဲ့ အခြေအနေမျိုးကို သတိထားပါ။ အဲ့ဒါကို <strong>infinite loop</strong> လို့ခေါ်ပါတယ်။ Loop ရပ်မယ့် အခြေအနေကို သေချာ သတ်မှတ်ထားဖို့ လိုပါတယ်။</p>
+
+          <p>ဒီနေ့မှာတော့ List (Array) တွေကို လှည့်ပတ်ဖို့ နောက်ထပ် နည်းလမ်းတစ်ခုဖြစ်တဲ့ <code>while</code> loop အကြောင်း လေ့လာခဲ့ကြပါတယ်။ <code>while</code> loop ဟာ Programming မှာ အရေးပါတဲ့ Loop အမျိုးအစားတစ်ခုဖြစ်ပြီး အခြေအနေပေါ်မူတည်ပြီး Code တွေကို ထပ်ခါထပ်ခါ လုပ်ဆောင်ချင်တဲ့အခါ အသုံးဝင်ပါတယ်။ နောက်ရက်တွေမှာတော့ Loop တွေနဲ့ ပတ်သက်တဲ့ နောက်ထပ် အသုံးဝင်တဲ့ အကြောင်းအရာတွေကို ဆက်ပြီး လေ့လာသွားကြမယ်နော်။ 😊</p>
+
+          <ul class="hashtags">
+            <li>#NWT</li>
+            <li>#programming</li>
+            <li>#list</li>
+            <li>#array</li>
+            <li>#loop</li>
+            <li>#whileloop</li>
+            <li>#javascript</li>
+            <li>#အခြေခံ</li>
+            <li>#နည်းပညာ</li>
+          </ul>
+        </div>
+
+        <div class="image-box">
+          <img src="./day_22_01.png" alt="while loop example" />
+          <img src="./day_22_02.webp" alt="while loop example" />
+          <img src="./day_22_03.webp" alt="while loop example" />
+          <img src="./day_22_04.jpg" alt="while loop example" />
+          <img src="./day_22_05.png" alt="while loop example" />
+          <img src="./day_22_06.png" alt="while loop example" />
+          <img src="./day_22_07.jpg" alt="while loop example" />
+          <img src="./day_22_08.png" alt="while loop example" />
+          <img src="./day_22_09.png" alt="while loop example" />
+        </div>
+      </div>
+    </div>
+    <footer>
+      © 2025 NWT Programming Basic — All rights reserved
+    </footer>
+  </body>
+</html>
