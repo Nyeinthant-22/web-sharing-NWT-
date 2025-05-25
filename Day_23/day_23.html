@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Day 23 - List (Array) ထဲက ဂဏန်းတွေကို ပေါင်းခြင်း
+    </title>
+    <link rel="icon" type="image/x-icon" href="./N_logo.png" />
+    <style>
+      /* Same CSS as Day 19 */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background-color: antiquewhite;
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+      .side-bar {
+        width: 100%;
+        background-color: #ffffff;
+        color: rgb(0, 0, 0);
+        padding: 20px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+        border-radius: 10px;
+        text-align: center;
+        /* Changed to flex container for horizontal layout */
+        display: flex;
+        flex-direction: row; /* Make items horizontal */
+        justify-content: space-around; /* Space out logo/title and nav links */
+        align-items: center; /* Vertically align items */
+        flex-wrap: wrap; /* Allow wrapping on smaller screens */
+      }
+      .side-bar h2 {
+        font-family: sans-serif;
+        font-weight: bold;
+        letter-spacing: 1px;
+        margin-bottom: 0; /* Remove bottom margin for horizontal layout */
+        margin-right: 20px; /* Add some space between title and nav */
+      }
+      .side-bar ul {
+        list-style: none;
+        display: flex;
+        /* Keep flex-direction: row; for the list items */
+        justify-content: flex-end; /* Align links to the right */
+        flex-grow: 1; /* Allow ul to take available space */
+        flex-wrap: wrap; /* Allow links to wrap on smaller screens */
+        gap: 20px; /* Space between list items */
+      }
+      .side-bar ul li a {
+        text-decoration: none;
+        color: rgb(83, 83, 83);
+        font-weight: bold;
+        transition: 0.5s ease;
+      }
+      .side-bar ul li a:hover {
+        color: rgb(0, 0, 0);
+      }
+      .container {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        margin: 30px;
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+      }
+      .main {
+        display: flex;
+        padding: 20px;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+      .content-box {
+        background-color: antiquewhite;
+        line-height: 1.8;
+        padding: 20px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+        border-radius: 10px;
+        flex: 2;
+        min-width: 300px;
+      }
+      .content-box pre {
+        background-color: #ffffff;
+        padding: 10px;
+        margin: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+        border-radius: 10px;
+        border-left: 4px solid rgb(42, 42, 140);
+        overflow-x: auto;
+      }
+      .image-box {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+        min-width: 300px;
+      }
+      .image-box img {
+        width: 100%;
+        max-width: 250px;
+        border-radius: 10px;
+        object-fit: cover;
+      }
+      footer {
+        width: 100%;
+        background-color: #33495e;
+        padding: 20px;
+        color: white;
+        font-weight: bold;
+        text-align: center;
+        position: relative;
+        margin-top: auto;
+      }
+      ul.hashtags {
+        display: flex;
+        flex-wrap: wrap;
+        list-style: none;
+        margin-top: 20px;
+        gap: 20px;
+      }
+      ul.hashtags li {
+        background-color: #e1e1e1;
+        padding: 5px 10px;
+        border-radius: 10px;
+        color: rgb(0, 0, 0);
+        font-weight: bold;
+        font-size: 0.9em;
+      }
+      @media (max-width: 768px) {
+        .container {
+          margin: 10px;
+        }
+        .main {
+          flex-direction: column;
+          padding: 10px;
+        }
+        .content-box,
+        .image-box {
+          width: 100%;
+          flex: 1 1 100%;
+          min-width: 0;
+        }
+        .image-box {
+          flex-direction: row;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+        .image-box > div {
+          width: 45%;
+          max-width: 100%;
+          margin: 10px;
+        }
+        footer {
+          font-size: 14px;
+          padding: 15px;
+        }
+        .side-bar {
+          flex-direction: column; /* Stack items vertically on small screens */
+          align-items: center;
+          padding: 15px;
+        }
+        .side-bar h2 {
+          margin-right: 0;
+          margin-bottom: 15px; /* Add space below title */
+        }
+        .side-bar ul {
+          justify-content: center; /* Center links on small screens */
+          width: 100%; /* Make ul take full width */
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="side-bar">
+      <img src="./N_logo.png" style="width: 30px; border-radius: 10px;" alt="">
+      <h2 style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-weight: bold;">NWT</h2>
+      <ul>
+        <li><a href="https://nyeinthant-22.github.io/web-sharing-NWT-/Day_22/day_22">Day 22 - while Loop</a></li>
+        <li><a href="https://nyeinthant-22.github.io/web-sharing-NWT-/Day_23/day_23">Day 23 - Summing Numbers in Array</a></li>
+        <li><a href="#">Day 24 - Comming Soon</a></li>
+      </ul>
+    </div>
+    <div class="container">
+      <div class="main">
+        <div class="content-box">
+          <h1>Day 23: List (Array) ထဲက ဂဏန်းတွေကို ပေါင်းခြင်း (Summing Numbers in a List/Array)</h1>
+          <p>မင်္ဂလာပါ! 👋 လွန်ခဲ့တဲ့ရက်တွေက <code>for</code>, <code>for...of</code>, <code>while</code> စတဲ့ Loop အမျိုးအစားတွေအကြောင်း လေ့လာခဲ့ကြတယ်နော်။ ဒီနေ့မှာတော့ Loop တွေရဲ့ အသုံးဝင်ပုံကို ပြသနိုင်မယ့် လက်တွေ့ကျတဲ့ ဥပမာတစ်ခုကို လုပ်ကြည့်ရအောင်။ အဲ့ဒါကတော့ <strong>Array ထဲမှာရှိတဲ့ ဂဏန်းတွေအားလုံးကို ပေါင်းနည်း</strong> ပါပဲ 😉။</p>
+
+          <h3>ဘာကြောင့် Array ထဲက ဂဏန်းတွေကို ပေါင်းဖို့ လိုအပ်တာလဲ?</h3>
+          <p>စဉ်းစားကြည့်ပါ... မင်းမှာ ကျောင်းသားတစ်ယောက်ရဲ့ ဘာသာရပ်အမှတ်စာရင်း (ဥပမာ: [၇၀, ၈၅, ၉၀, ၇၅, ၈၀]) ရှိတယ်ဆိုပါစို့။ အဲ့ဒီအမှတ်တွေရဲ့ စုစုပေါင်းကို တွက်ချင်ရင် တစ်ခုချင်းစီ လက်နဲ့ ပေါင်းနေတာက မလွယ်ပါဘူး။ အထူးသဖြင့် ဂဏန်းတွေ အများကြီးရှိနေတဲ့အခါပေါ့။ ဒီလိုအချိန်မျိုးမှာ Loop ကိုသုံးပြီး အမှတ်အားလုံးကို အလိုအလျောက် ပေါင်းလို့ရပါတယ်။</p>
+
+          <h3>Loop ကိုသုံးပြီး ဂဏန်းတွေ ပေါင်းနည်း</h3>
+          <p>ဒီလုပ်ဆောင်ချက်အတွက် <code>for...of</code> loop က အရမ်းအဆင်ပြေပါတယ်။ ဘာလို့လဲဆိုတော့ Index ကို စိတ်ပူစရာမလိုဘဲ Array ထဲက ဂဏန်းတန်ဖိုးတစ်ခုချင်းစီကို တိုက်ရိုက် ရယူပြီး ပေါင်းထည့်သွားနိုင်လို့ပါ။</p>
+
+          <h3>ရိုးရှင်းသော Code ဥပမာ (JavaScript ဖြင့်):</h3>
+          <pre><code>let examScores = [70, 85, 90, 75, 80]; // စာမေးပွဲ အမှတ်စာရင်း Array
+let totalScore = 0; // စုစုပေါင်း အမှတ်ကို သိမ်းထားဖို့ Variable (စစချင်း 0 ပေးထားတယ်)
+
+// examScores Array ထဲက အမှတ်တစ်ခုချင်းစီကို လှည့်ပတ်ကြည့်မယ်
+for (let score of examScores) {
+  totalScore = totalScore + score; // လက်ရှိ score ကို totalScore ထဲ ပေါင်းထည့်မယ်
+  // ဒါကို totalScore += score; လို့လည်း ရေးလို့ရပါတယ်
+}
+
+console.log("စုစုပေါင်း အမှတ်: " + totalScore); // ရလဒ်ကို ဖော်ပြမယ်
+</code></pre>
+
+          <h3>Code ရဲ့ ရှင်းလင်းချက်:</h3>
+          <ul>
+            <li><code>let examScores = [70, 85, 90, 75, 80];</code>: ဒါက <code>examScores</code> ဆိုတဲ့ နံပါတ်တွေပါတဲ့ Array တစ်ခုကို ဖန်တီးလိုက်တာပါ။</li>
+            <li><code>let totalScore = 0;</code>: ဒါက ဂဏန်းတွေပေါင်းပြီးရလာမယ့် စုစုပေါင်းတန်ဖိုးကို သိမ်းထားဖို့ <code>totalScore</code> ဆိုတဲ့ Variable တစ်ခုကို ဖန်တီးလိုက်တာပါ။ စစချင်းမှာ <code>0</code> လို့ သတ်မှတ်ထားရပါတယ်။ (ဘာလို့လဲဆိုတော့ ဘာမှ မပေါင်းခင် စုစုပေါင်းက 0 ပဲ ဖြစ်ရမှာမို့ပါ)။</li>
+            <li><code>for (let score of examScores)</code>: ဒါက <code>examScores</code> Array ထဲက အမှတ်တစ်ခုချင်းစီကို လှည့်ပတ်ဖို့ <code>for...of</code> loop ကို စတင်လိုက်တာပါ။ Loop တစ်ပတ်စီမှာ <code>score</code> ဆိုတဲ့ Variable ထဲကို Array ထဲက လက်ရှိ အမှတ်တစ်ခု ရောက်လာပါမယ်။</li>
+            <li><code>totalScore = totalScore + score;</code>: ဒါက Loop တစ်ပတ်စီမှာ လုပ်ဆောင်မယ့် အဓိက လုပ်ဆောင်ချက်ပါ။ <code>totalScore</code> ရဲ့ လက်ရှိတန်ဖိုးကို <code>score</code> ရဲ့ တန်ဖိုးနဲ့ ပေါင်းပြီး ရလာတဲ့ အဖြေကို <code>totalScore</code> ထဲကိုပဲ ပြန်ထည့်လိုက်တာပါ။</li>
+          </ul>
+
+          <h3>ဒီ Code ကို Run လိုက်ရင် ဘာထွက်လာမလဲ?</h3>
+          <pre><code>စုစုပေါင်း အမှတ်: 400
+</code></pre>
+
+          <p>ဒီနေ့မှာတော့ Loop တွေကို သုံးပြီး Array ထဲက ဂဏန်းတွေကို ဘယ်လို ပေါင်းရမလဲဆိုတာကို လေ့လာခဲ့ကြပါတယ်။ ဒါဟာ Programming မှာ အချက်အလက်တွေကို စုစည်းပြီး တွက်ချက်မှုတွေ လုပ်ဆောင်တဲ့နေရာမှာ မရှိမဖြစ် လိုအပ်တဲ့ Skill တစ်ခုပါပဲ။ ဒီနေ့သင်ခန်းစာကို စမ်းသပ်လေ့ကျင့်ကြည့်ဖို့ တိုက်တွန်းပါတယ်နော်! 😊</p>
+
+          <ul class="hashtags">
+            <li>#NWT</li>
+            <li>#programming</li>
+            <li>#list</li>
+            <li>#array</li>
+            <li>#loop</li>
+            <li>#sum</li>
+            <li>#javascript</li>
+            <li>#အခြေခံ</li>
+            <li>#နည်းပညာ</li>
+            <li>#မြန်မာ</li>
+          </ul>
+        </div>
+
+        <div class="image-box">
+          <img src="./day_23_01.png" alt="Summing numbers in array example 1" />
+          <img src="./day_23_02.png" alt="Summing numbers in array example 2" />
+          <img src="./day_23_03.jpg" alt="Summing numbers in array example 3" />
+          <img src="./day_23_04.jpg" alt="Summing numbers in array example 4" />
+          <img src="./day_23_05.png" alt="Summing numbers in array example 5" />
+          <img src="./day_23_06.png" alt="Summing numbers in array example 6" />
+          <img src="./day_23_07.png" alt="Summing numbers in array example 6" />
+          <img src="./day_23_08.png" alt="Summing numbers in array example 6" />
+          <img src="./day_23_09.png" alt="Summing numbers in array example 6" />
+        </div>
+      </div>
+    </div>
+    <footer>
+      © 2025 NWT Programming Basic — All rights reserved
+    </footer>
+  </body>
+</html>
