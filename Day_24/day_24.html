@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Day 24 - List (Array) ထဲက သတ်မှတ်ထားတဲ့ အချက်အလက်တွေကို ရှာဖွေခြင်း
+    </title>
+    <link rel="icon" type="image/x-icon" href="./N_logo.png" />
+    <style>
+      /* Same CSS as Day 19 */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background-color: antiquewhite;
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+      .side-bar {
+        width: 100%;
+        background-color: #ffffff;
+        color: rgb(0, 0, 0);
+        padding: 20px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+        border-radius: 10px;
+        text-align: center;
+        /* Changed to flex container for horizontal layout */
+        display: flex;
+        flex-direction: row; /* Make items horizontal */
+        justify-content: space-around; /* Space out logo/title and nav links */
+        align-items: center; /* Vertically align items */
+        flex-wrap: wrap; /* Allow wrapping on smaller screens */
+      }
+      .side-bar h2 {
+        font-family: sans-serif;
+        font-weight: bold;
+        letter-spacing: 1px;
+        margin-bottom: 0; /* Remove bottom margin for horizontal layout */
+        margin-right: 20px; /* Add some space between title and nav */
+      }
+      .side-bar ul {
+        list-style: none;
+        display: flex;
+        /* Keep flex-direction: row; for the list items */
+        justify-content: flex-end; /* Align links to the right */
+        flex-grow: 1; /* Allow ul to take available space */
+        flex-wrap: wrap; /* Allow links to wrap on smaller screens */
+        gap: 20px; /* Space between list items */
+      }
+      .side-bar ul li a {
+        text-decoration: none;
+        color: rgb(83, 83, 83);
+        font-weight: bold;
+        transition: 0.5s ease;
+      }
+      .side-bar ul li a:hover {
+        color: rgb(0, 0, 0);
+      }
+      .container {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        margin: 30px;
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+      }
+      .main {
+        display: flex;
+        padding: 20px;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+      .content-box {
+        background-color: antiquewhite;
+        line-height: 1.8;
+        padding: 20px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+        border-radius: 10px;
+        flex: 2;
+        min-width: 300px;
+      }
+      .content-box pre {
+        background-color: #ffffff;
+        padding: 10px;
+        margin: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+        border-radius: 10px;
+        border-left: 4px solid rgb(42, 42, 140); /* Changed border color for new day */
+        overflow-x: auto;
+      }
+      .image-box {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+        min-width: 300px;
+      }
+      .image-box img {
+        width: 100%;
+        max-width: 250px;
+        border-radius: 10px;
+        object-fit: cover;
+      }
+      footer {
+        width: 100%;
+        background-color: #33495e;
+        padding: 20px;
+        color: white;
+        font-weight: bold;
+        text-align: center;
+        position: relative;
+        margin-top: auto;
+      }
+      ul.hashtags {
+        display: flex;
+        flex-wrap: wrap;
+        list-style: none;
+        margin-top: 20px;
+        gap: 20px;
+      }
+      ul.hashtags li {
+        background-color: #e1e1e1;
+        padding: 5px 10px;
+        border-radius: 10px;
+        color: rgb(0, 0, 0);
+        font-weight: bold;
+        font-size: 0.9em;
+      }
+      @media (max-width: 768px) {
+        .container {
+          margin: 10px;
+        }
+        .main {
+          flex-direction: column;
+          padding: 10px;
+        }
+        .content-box,
+        .image-box {
+          width: 100%;
+          flex: 1 1 100%;
+          min-width: 0;
+        }
+        .image-box {
+          flex-direction: row;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+        .image-box > div {
+          width: 45%;
+          max-width: 100%;
+          margin: 10px;
+        }
+        footer {
+          font-size: 14px;
+          padding: 15px;
+        }
+        .side-bar {
+          flex-direction: column; /* Stack items vertically on small screens */
+          align-items: center;
+          padding: 15px;
+        }
+        .side-bar h2 {
+          margin-right: 0;
+          margin-bottom: 15px; /* Add space below title */
+        }
+        .side-bar ul {
+          justify-content: center; /* Center links on small screens */
+          width: 100%; /* Make ul take full width */
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="side-bar">
+      <img src="./N_logo.png" style="width: 30px; border-radius: 10px;" alt="">
+      <h2 style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-weight: bold;">NWT</h2>
+      <ul>
+        <li><a href="https://nyeinthant-22.github.io/web-sharing-NWT-/Day_22/day_22">Day 22 - while Loop</a></li>
+        <li><a href="https://nyeinthant-22.github.io/web-sharing-NWT-/Day_23/day_23">Day 23 - Summing Numbers in Array</a></li>
+        <li><a href="https://nyeinthant-22.github.io/web-sharing-NWT-/Day_24/day_24">Day 24 - Finding Specific Elements</a></li>
+        
+      </ul>
+    </div>
+    <div class="container">
+      <div class="main">
+        <div class="content-box">
+          <h1>Day 24: List (Array) ထဲက သတ်မှတ်ထားတဲ့ အချက်အလက်တွေကို ရှာဖွေခြင်း (Finding Specific Elements in a List/Array)</h1>
+          <p>မင်္ဂလာပါ! 👋 လွန်ခဲ့တဲ့ရက်တွေက Loop တွေကို သုံးပြီး Array ထဲက ဂဏန်းတွေကို ဘယ်လို ပေါင်းရမလဲဆိုတာ လေ့လာခဲ့ကြတယ်နော်။ ဒီနေ့မှာတော့ Loop တွေရဲ့ နောက်ထပ် အသုံးဝင်တဲ့ အသုံးချမှုတစ်ခုကို လေ့လာသွားကြမယ်။ အဲ့ဒါကတော့ <strong>Array ထဲက သတ်မှတ်ထားတဲ့ အချက်အလက် (သို့မဟုတ်) အခြေအနေတစ်ခုနဲ့ ကိုက်ညီတဲ့ အချက်အလက်တွေကို ရှာဖွေခြင်း</strong> ပါပဲ 😉။</p>
+
+          <h3>ဘာကြောင့် Array ထဲက အချက်အလက်တွေကို ရှာဖွေဖို့ လိုအပ်တာလဲ?</h3>
+          <p>စဉ်းစားကြည့်ပါ... မင်းမှာ ကျောင်းသားနာမည်စာရင်း ၁၀၀ ရှိတယ် 🧑‍🤝‍🧑။ အဲ့ဒီထဲက "မောင်မောင်" ဆိုတဲ့ နာမည်ပါတဲ့ ကျောင်းသားကို ရှာချင်တယ်ဆိုပါစို့။ ဒါမှမဟုတ် အမှတ် ၅၀ အထက်ရတဲ့ ကျောင်းသားတွေရဲ့ နာမည်စာရင်းကို ထုတ်ချင်တယ်ဆိုပါစို့။ ဒီလိုမျိုး သတ်မှတ်ချက်တွေနဲ့ ကိုက်ညီတဲ့ အချက်အလက်တွေကို ရှာဖွေတဲ့အခါ Loop နဲ့ Conditional Statement (<code>if</code>) ကို ပေါင်းစပ်ပြီး သုံးလို့ရပါတယ်။</p>
+
+          <h3>Loop နဲ့ <code>if</code> Statement ကိုသုံးပြီး အချက်အလက် ရှာဖွေနည်း</h3>
+          <p>ဒီလုပ်ဆောင်ချက်အတွက် <code>for...of</code> loop က အရမ်းအဆင်ပြေပါတယ်။ Array ထဲက element တစ်ခုချင်းစီကို စစ်ဆေးဖို့ <code>for...of</code> loop ကို သုံးပြီး၊ အဲ့ဒီ element က သတ်မှတ်ထားတဲ့ အခြေအနေနဲ့ ကိုက်ညီလားဆိုတာ စစ်ဆေးဖို့ <code>if</code> statement ကို သုံးပါတယ်။</p>
+
+          <h3>ရိုးရှင်းသော Code ဥပမာ (JavaScript ဖြင့်):</h3>
+          <pre><code>let fruits = ["apple", "banana", "orange", "grape", "apple", "kiwi"];
+let fruitToFind = "apple"; // ရှာချင်တဲ့ အသီးနာမည်
+
+console.log("ရှာဖွေနေသည်: " + fruitToFind);
+console.log("--------------------");
+
+// fruits Array ထဲက အသီးတစ်ခုချင်းစီကို လှည့်ပတ်ကြည့်မယ်
+for (let fruit of fruits) {
+  // လက်ရှိ 'fruit' က ရှာချင်တဲ့ 'fruitToFind' နဲ့ တူလား စစ်ဆေးမယ်
+  if (fruit === fruitToFind) {
+    console.log("တွေ့ပါပြီ! " + fruit + " ကို တွေ့ရှိသည်!");
+  }
+}
+console.log("--------------------");
+
+// နောက်ထပ် ဥပမာ: အမှတ် ၈၀ အထက်ရတဲ့ ကျောင်းသားအမှတ်တွေကို ရှာမယ်
+let studentScores = [65, 82, 90, 70, 55, 88, 75];
+console.log("\nအမှတ် ၈၀ အထက်ရရှိသူများ:");
+console.log("--------------------");
+
+for (let score of studentScores) {
+  if (score >= 80) { // score က 80 ထက် ကြီးလား၊ 80 နဲ့ တူလား စစ်ဆေးမယ်
+    console.log("ကောင်းတယ်! " + score + " မှတ် ရရှိသည်!");
+  }
+}
+console.log("--------------------");
+</code></pre>
+
+          <h3>Code ရဲ့ ရှင်းလင်းချက်:</h3>
+          <ul>
+            <li><code>let fruits = ["apple", ...];</code>: ဒါက အသီးနာမည်တွေပါတဲ့ <code>fruits</code> Array ကို ဖန်တီးလိုက်တာပါ။</li>
+            <li><code>let fruitToFind = "apple";</code>: ဒါက ကျွန်တော်တို့ ရှာချင်တဲ့ အသီးနာမည်ကို <code>fruitToFind</code> ဆိုတဲ့ Variable ထဲမှာ ထည့်ထားတာပါ။</li>
+            <li><code>for (let fruit of fruits)</code>: <code>fruits</code> Array ထဲက အသီးနာမည်တစ်ခုချင်းစီကို လှည့်ပတ်ကြည့်ဖို့ <code>for...of</code> loop ကို စတင်လိုက်တာပါ။ Loop တစ်ပတ်စီမှာ <code>fruit</code> Variable ထဲကို လက်ရှိအသီးနာမည် ရောက်လာပါမယ်။</li>
+            <li><code>if (fruit === fruitToFind)</code>: ဒါက <code>if</code> statement ပါ။ လက်ရှိ <code>fruit</code> (ဥပမာ: "apple") ဟာ <code>fruitToFind</code> ("apple") နဲ့ <code>===</code> (တန်ဖိုးရော၊ အမျိုးအစားပါ) တူညီလားဆိုတာကို စစ်ဆေးပါတယ်။
+              <ul>
+                <li>တကယ်လို့ တူညီတယ် (အခြေအနေက <code>true</code> ဖြစ်တယ်) ဆိုရင် <code>if</code> block ထဲက <code>console.log()</code> ကို လုပ်ဆောင်ပါမယ်။</li>
+                <li>မတူညီဘူး (အခြေအနေက <code>false</code> ဖြစ်တယ်) ဆိုရင် <code>if</code> block ထဲက Code တွေကို ကျော်သွားပါမယ်။</li>
+              </ul>
+            </li>
+            <li>ဒုတိယဥပမာမှာလည်း အလားတူပါပဲ။ <code>studentScores</code> ထဲက <code>score</code> တစ်ခုချင်းစီကို လှည့်ပတ်ပြီး <code>score >= 80</code> ဆိုတဲ့ အခြေအနေနဲ့ ကိုက်ညီလားဆိုတာကို <code>if</code> statement နဲ့ စစ်ဆေးသွားတာပါ။</li>
+          </ul>
+
+          <h3>ဒီ Code ကို Run လိုက်ရင် ဘာထွက်လာမလဲ?</h3>
+          <pre><code>ရှာဖွေနေသည်: apple
+--------------------
+တွေ့ပါပြီ! apple ကို တွေ့ရှိသည်!
+တွေ့ပါပြီ! apple ကို တွေ့ရှိသည်!
+--------------------
+
+အမှတ် ၈၀ အထက်ရရှိသူများ:
+--------------------
+ကောင်းတယ်! 82 မှတ် ရရှိသည်!
+ကောင်းတယ်! 90 မှတ် ရရှိသည်!
+ကောင်းတယ်! 88 မှတ် ရရှိသည်!
+--------------------
+</code></pre>
+
+          <p>ဒီနေ့မှာတော့ Loop နဲ့ <code>if</code> statement ကို ပေါင်းစပ်ပြီး Array ထဲက သတ်မှတ်ထားတဲ့ အချက်အလက်တွေကို ဘယ်လို ရှာဖွေရမလဲဆိုတာကို လေ့လာခဲ့ကြပါတယ်။ ဒါဟာ Data တွေကို စီမံခန့်ခွဲရာမှာ အရေးကြီးတဲ့ အဆင့်တစ်ခုဖြစ်ပြီး နောက်ပိုင်းမှာ ပိုပြီးရှုပ်ထွေးတဲ့ Program တွေ ရေးတဲ့အခါ အများကြီး အသုံးဝင်မှာပါ။ ဒီနေ့သင်ခန်းစာကိုလည်း လက်တွေ့လေ့ကျင့်ကြည့်ဖို့ မမေ့နဲ့နော်! 😊</p>
+
+          <ul class="hashtags">
+            <li>#programming</li>
+            <li>#list</li>
+            <li>#array</li>
+            <li>#loop</li>
+            <li>#ifstatement</li>
+            <li>#search</li>
+            <li>#filter</li>
+            <li>#javascript</li>
+            <li>#အခြေခံ</li>
+            <li>#နည်းပညာ</li>
+            <li>#မြန်မာ</li>
+          </ul>
+
+          <hr style="margin-top: 40px; margin-bottom: 40px; border-top: 2px solid #ccc;">
+          <div style="text-align: center; padding: 20px; background-color: #e6ffe6; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.2);">
+              <h2 style="color: #28a745; margin-bottom: 15px;">ဂုဏ်ယူပါတယ်! သင်တန်းပြီးဆုံးခြင်း (Congratulations! Course Completion)</h2>
+              <p style="font-size: 1.1em; line-height: 1.6;">
+                  🎉 Program Basic for Beginners သင်တန်းရဲ့ ၂၄ ရက်တာ ခရီးစဉ်ကို အောင်မြင်စွာ ပြီးဆုံးသွားပြီဖြစ်တဲ့အတွက် အထူးဂုဏ်ယူဝမ်းမြောက်ပါတယ်! 🎊
+              </p>
+              <p style="font-size: 1.1em; line-height: 1.6; margin-top: 10px;">
+                  ဒီသင်တန်းကနေတစ်ဆင့် Programming ရဲ့ အခြေခံအုတ်မြစ်တွေကို ခိုင်မာစွာ တည်ဆောက်နိုင်ခဲ့ပြီလို့ ယုံကြည်ပါတယ်။ Variables တွေ၊ Data Types တွေ၊ Operators တွေ၊ Conditional Statements တွေ၊ Loops တွေ၊ Array တွေအကြောင်း ကောင်းစွာ နားလည်ပြီး လက်တွေ့အသုံးချနိုင်ခဲ့ပါပြီ။
+              </p>
+              <p style="font-size: 1.1em; line-height: 1.6; margin-top: 10px;">
+                  ဒါပေမယ့် သင်ယူမှုဆိုတာ အဆုံးသတ်မရှိပါဘူး။ သင်ခန်းစာတွေ ပြီးဆုံးသွားပေမယ့် သင်ရဲ့ Programming ခရီးစဉ်ကတော့ အခုမှ စတင်တာပဲ ရှိပါသေးတယ်။
+              </p>
+              <h3 style="color: #007bff; margin-top: 20px; margin-bottom: 15px;">ရှေ့ဆက်မယ့် ခရီးစဉ်အတွက် အကြံပြုချက်များ:</h3>
+              <ul style="list-style-type: none; padding: 0; text-align: left; max-width: 600px; margin: 0 auto;">
+                  <li style="margin-bottom: 10px;">✅ <strong>လက်တွေ့လေ့လေ့ကျင့်ခန်းများ ပိုမိုလုပ်ဆောင်ပါ။</strong> သင်ယူခဲ့သမျှကို အသေးစား Project လေးတွေ ရေးသားပြီး လက်တွေ့အသုံးချပါ။</li>
+                  <li style="margin-bottom: 10px;">✅ <strong>နောက်နေ့တွေမှာ လိုအပ်တဲ့ အခြေခံလေးတွေကို ဝေမျှပေးမှာပါ</strong> ဥပမာ Html , Css တို့နဲ့ project လေးတွေ ရေးသားနိုင်အောင်လို့ အချိန်တိုအတွင်း 4 ရက် 1 Serie နှုန်းနဲ့ တင်ပေးပါမယ်ဗျမယ်ဗျ ၊ serie တစ်ခုပီးတိုင်းလဲ မေးခွန်းလေးတွေ လုပ်ပေးမှာဖြစ်ပီး ဝင်ဖြေရင်း ကိုယ်သင်ယူခဲ့တာတွေကို ပိုနားလည်အောင် လုပ်နိုင်မှာဖြစ်ပါတယ်။</li>
+              </ul>
+              <p style="font-size: 1.1em; font-weight: bold; margin-top: 20px;">
+                  ဆိုတော့ ခရီးကတော့ ခုမှစတာနော့် ၊ ဆက်သွားကြတာပေါ့  
+                  ပျော်ရွှင်သော Programming ခရီးစဉ် ဖြစ်ပါစေ!
+              </p>
+          </div>
+        </div>
+
+        <div class="image-box">
+          <img src="./day_24_01.jpg" alt="Filtering data concept" />
+          <img src="./day_24_02.png" alt="Loop with if condition" />
+          <img src="./day_24_03.png" alt="Finding an item in a list" />
+          <img src="./day_24_04.jpg" alt="Conditional logic in programming" />
+          <img src="./day_24_05.png" alt="Search icon for data" />
+          <img src="./day_24_06.jpg" alt="Data filtering example" />
+          <img src="./day_24_07.png" alt="Select specific items" />
+          <img src="./day_24_08.jpg" alt="Array searching flowchart" />
+          <img src="./day_24_09.png" alt="Find value in array" />
+        </div>
+      </div>
+    </div>
+    <footer>
+      © 2025 NWT Programming Basic — All rights reserved
+    </footer>
+  </body>
+</html>
